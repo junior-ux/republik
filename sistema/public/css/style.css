@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Reem Kufi Ink', sans-serif;
+}
+.navbar{
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+}
+ul{
+    flex: 1;
+    text-align: right;
+}
+ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 0 20px;
+}
+ul li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 0 10px;
+}
+.botao-entrar{
+    padding: 7px 30px;
+    outline: none;
+    border: 1px solid #54CFDB;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #54CFDB;
+    background: transparent;
+}
+.fundo{
+    background-color: #122526;
+}
+.banner{
+    width: 80%;
+    display: flex;
+    margin: auto;
+    margin-top: 80px;
+}
+.coluna-esquerda, .coluna-direita{
+    flex-basis: 100vh;
+}
+.coluna-direita img{
+    display: flex;
+    width: 600px;
+}
+.input-pesquisar{
+    width: 400px;
+    height: 50px;
+    display: flex;
+    padding-bottom: 3px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.input-pesquisar img{
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    cursor: pointer;
+}
+.input-pesquisar input{
+    width: 100%;
+    padding-left: 10px;
+    font-size: 17px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+}
+.coluna-esquerda h1{
+    font-size: 50px;
+    color: #fff;
+}
+.botao-buscar button{
+    padding: 7px 30px;
+    margin-right: 15px;
+    width: 400px;
+    height: 50px;
+    outline: none;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #1594A6;
+}
+
+/*CARD 1*/
+.secao-1{
+    width: 80%;
+    margin: auto;
+    padding: 50px;
+    text-align: center;
+    align-items: center;
+    background: #fff;
+}
+.titulo-cards-1{
+    text-align: center;
+    color: #122526;
+    font-size: 50px;
+}
+.card-1{
+    width: 350px;
+    height: 500px;
+    margin: 25px;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+}
+.card-info-1{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.card-header-1{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.card-img-1{
+    min-width: 100%;
+    width: auto;
+    height: 100%;
+}
+.card-body-1{
+    height: 170px;
+    padding: 15px;
+    text-align: center;
+}
+.card-local-1{
+    font-size: 16px;
+    margin: 10px 0;
+}
+.card-titulo-1{
+    font-size: 32px;
+    margin: 15px 0;
+    text-align: left;
+}
+.card-texto-1{
+    font-size: 20px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    color:rgb(37, 37, 37);
+}
+.botao-entrar-contato-1 button{
+    padding: 7px 30px;
+    margin-right: 15px;
+    width: 250px;
+    height: 50px;
+    outline: none;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #122526;
+}
+
+
+/*CARD 2*/
+.secao-2{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    background: #122526;
+    padding: 50px;
+}
+.titulo-cards-2{
+    text-align: center;
+    color: #ffffff;
+    font-size: 50px;
+}
+.card-2{
+    width: 350px;
+    height: 500px;
+    margin: 25px;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+}
+.card-info-2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.card-header-2{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.card-img-2{
+    min-width: 100%;
+    width: auto;
+    height: 100%;
+}
+.card-body-2{
+    height: 170px;
+    padding: 15px;
+    text-align: center;
+}
+.card-local-2{
+    font-size: 16px;
+    margin: 10px 0;
+}
+.card-titulo-2{
+    font-size: 25px;
+    margin: 15px 0;
+    color: #000;
+}
+.card-texto-2{
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.card-body-2 .descricao-2{
+    font-size: 15px;
+    text-align: justify;
+    color: rgb(37, 37, 37);
+}
+.botao-entrar-contato-2 button{
+    margin-right: 15px;
+    width: 250px;
+    height: 50px;
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #122526;
+    border: 2px solid #122526;
+    border-radius: 20px;
+    cursor: pointer;
+    background: transparent;
+}

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
     <!--CSS-->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!--FONT GOOGLE-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,28 @@
             <li><a href="#">Início</a></li>
             <li><a href="#">Sobre nós</a></li>
             <li><a href="#">Contato</a></li>
-            <li><a href="#" class="botao-entrar">Entrar</a></li>
+            @if (Route::has('login'))
+                @auth
+                    <li><a href="{{ url('/dashboard') }}" class="botao-entrar">Perfil</a></li>
+                    <li>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <a href="/logout" 
+                                class="botao-entrar"
+                                onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                                Sair
+                            </a>
+                        </form>
+                    </li>
+                @else
+                    <li><a href="{{ route('login') }}" class="botao-entrar">Entrar</a></li>
+
+                    @if (Route::has('register'))
+                        <li><a href="{{ route('register') }}" class="botao-entrar">Cadastrar</a></li>
+                    @endif
+                @endauth
+            @endif
         </ul>
     </div>
 
