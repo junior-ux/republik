@@ -1,29 +1,47 @@
-*{
+/* GERAL */
+* {
     margin: 0;
     padding: 0;
     font-family: 'Reem Kufi Ink', sans-serif;
 }
-.navbar{
+.titulo-pagina {
+    width: 100%;
+    text-align: center;
+    color: #122526;
+    font-size: 60px;
+}
+
+/*navbar*/
+.navbar {
     width: 80%;
     margin: 30px auto;
     display: flex;
     align-items: center;
 }
-ul{
+ul {
     flex: 1;
     text-align: right;
 }
-ul li{
+ul li {
     display: inline-block;
     list-style: none;
     margin: 0 20px;
 }
-ul li a{
+ul li a {
     text-decoration: none;
     color: rgb(255, 255, 255);
     padding: 0 10px;
+    font-weight: 900;
 }
-.botao-entrar{
+.botao-navbar {
+    padding: 7px 30px;
+    outline: none;
+    border: 1px solid #122526;
+    border-radius: 20px;
+    cursor: pointer;
+    background: transparent;
+}
+.botao-navbar:hover {
     padding: 7px 30px;
     outline: none;
     border: 1px solid #54CFDB;
@@ -32,197 +50,169 @@ ul li a{
     color: #54CFDB;
     background: transparent;
 }
-.fundo{
+.fundo {
     background-color: #122526;
 }
-.banner{
+.logo {
+    color: white;
+}
+/*fim navbar*/
+
+/* Footer */
+.rodape {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 80%;
+    padding-top: 40px;
+    color: #fff;
+}
+hr {
+    color: #fff;
+    margin: 20px 0 30px 0;
+}
+.footer-content {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.footer-content h3 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+.social {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+.social li {
+    margin: 0 5px;
+}
+.social a {
+    text-decoration: none;
+    color: #fff;
+}
+.social a i {
+    font-size: 2.1rem;
+}
+/* fim rodape*/
+
+/*FIM GERAL*/
+
+
+
+/* HOMEPAGE */
+.banner {
     width: 80%;
     display: flex;
     margin: auto;
     margin-top: 80px;
 }
-.coluna-esquerda, .coluna-direita{
-    flex-basis: 100vh;
+.coluna-esquerda {
+    padding-left: 150px;
+    padding-top: 150px;
+    flex-basis: 100%;
 }
-.coluna-direita img{
+.coluna-direita img {
     display: flex;
     width: 600px;
 }
-.input-pesquisar{
-    width: 400px;
-    height: 50px;
-    display: flex;
-    padding-bottom: 3px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-.input-pesquisar img{
-    width: 30px;
-    height: 30px;
-    padding: 2px;
-    cursor: pointer;
-}
-.input-pesquisar input{
-    width: 100%;
-    padding-left: 10px;
-    font-size: 17px;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-}
-.coluna-esquerda h1{
+.coluna-esquerda h1 {
     font-size: 50px;
     color: #fff;
 }
-.botao-buscar button{
-    padding: 7px 30px;
-    margin-right: 15px;
-    width: 400px;
-    height: 50px;
-    outline: none;
-    font-size: 20px;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    background: #1594A6;
-}
 
-/*CARD 1*/
-.secao-1{
+/* homepage vaga */
+.container-vaga {
     width: 80%;
+    height: 100%;
+    /*display: flex;*/
     margin: auto;
-    padding: 50px;
-    text-align: center;
+    padding: 100px 0 100px 0;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     background: #fff;
 }
-.titulo-cards-1{
+.container-vaga .titulo .tam-vaga {
     text-align: center;
+    width: 100%;
     color: #122526;
+    margin-bottom: 50px;
     font-size: 50px;
 }
-.card-1{
+.tam-vaga{
+    padding: 5px;
+}
+.card-vaga {
     width: 350px;
-    height: 500px;
+    padding-bottom: 50px;
+    position: relative;
+    transition: 0.5s;
+    height: 550px;
     margin: 25px;
     background-color: #fff;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 }
-.card-info-1{
+.card-vaga .dados-vaga {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
-.card-header-1{
+.card-vaga .foto-vaga {
     width: 100%;
-    height: 200px;
+    height: 250px;
     overflow: hidden;
 }
-.card-img-1{
+.card-vaga .foto-vaga .tamanho-vaga {
     min-width: 100%;
     width: auto;
     height: 100%;
 }
-.card-body-1{
+.card-vaga .sobre-vaga  {
     height: 170px;
     padding: 15px;
     text-align: center;
 }
-.card-local-1{
-    font-size: 16px;
-    margin: 10px 0;
-}
-.card-titulo-1{
-    font-size: 32px;
-    margin: 15px 0;
-    text-align: left;
-}
-.card-texto-1{
-    font-size: 20px;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 10px;
-    color:rgb(37, 37, 37);
-}
-.botao-entrar-contato-1 button{
-    padding: 7px 30px;
-    margin-right: 15px;
-    width: 250px;
-    height: 50px;
-    outline: none;
-    font-size: 20px;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    background: #122526;
-}
-
-
-/*CARD 2*/
-.secao-2{
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    align-items: center;
-    background: #122526;
-    padding: 50px;
-}
-.titulo-cards-2{
-    text-align: center;
-    color: #ffffff;
-    font-size: 50px;
-}
-.card-2{
-    width: 350px;
-    height: 500px;
-    margin: 25px;
-    background-color: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
-}
-.card-info-2{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-.card-header-2{
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-}
-.card-img-2{
-    min-width: 100%;
-    width: auto;
-    height: 100%;
-}
-.card-body-2{
-    height: 170px;
-    padding: 15px;
-    text-align: center;
-}
-.card-local-2{
-    font-size: 16px;
-    margin: 10px 0;
-}
-.card-titulo-2{
+.card-vaga .sobre-vaga .informacao-vaga  {
+    display: flex;
     font-size: 25px;
-    margin: 15px 0;
-    color: #000;
+    align-items: center;
 }
-.card-texto-2{
-    font-size: 20px;
-    width: 100%;
-    margin-bottom: 10px;
+.card-vaga .sobre-vaga .informacao-vaga .valor-vaga {
+    flex: 1;
+    text-align: right;
 }
-.card-body-2 .descricao-2{
+.card-vaga .sobre-vaga .descricao-vaga {
     font-size: 15px;
     text-align: justify;
     color: rgb(37, 37, 37);
 }
-.botao-entrar-contato-2 button{
+.descricao-vaga  .titulo-vaga  {
+    font-size: 32px;
+    margin: 15px 0;
+    text-align: left;
+}
+.descricao-vaga .local-vaga {
+    font-size: 20px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    color: rgb(37, 37, 37);
+}
+.card-vaga .ver-mais-vaga  {
+    text-align: center;
+    align-items: center;
+}
+.card-vaga .ver-mais-vaga button {
     margin-right: 15px;
     width: 250px;
     height: 50px;
@@ -235,3 +225,242 @@ ul li a{
     cursor: pointer;
     background: transparent;
 }
+.card-vaga .ver-mais-vaga  button:hover {
+    color: #ffffff;
+    background: #122526;
+}
+/*fim homepage vaga*/
+
+/* homepage pessoa */
+.container-pessoa {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    padding: 100px 0 100px 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #122526;
+}
+.container-pessoa .titulo {
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    margin-bottom: 50px;
+    font-size: 30px;
+}
+.card-pessoa {
+    width: 350px;
+    height: 500px;
+    margin: 25px;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+.card-pessoa .foto {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+.card-pessoa .tamanho{
+    min-width: 100%;
+    width: auto;
+    height: 100%;
+}
+.ver-todas {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+.btn-ver-todas{
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    background: #1594A6;
+    color: white;
+}
+.btn-ver-todas:hover {
+    background: #000000;
+    color: white;
+}
+/*fim homepage pessoa*/
+/* FIM HOMEPAGE*/
+
+
+
+/* LISTA DE PESSOAS */
+.secao-pessoa {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    padding: 50px 0 50px 0;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #fff;
+}
+.inicio-pessoa {
+    margin: auto;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.titulo-home-pessoa {
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-size: 50px;
+}
+.card-pessoa {
+    width: 350px;
+    position: relative;
+    transition: 0.5s;
+    height: 550px;
+    margin: 25px;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+.card-pessoa .foto-pessoa {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+.card-pessoa .foto-pessoa .tamanho-pessoa {
+    min-width: 100%;
+    width: auto;
+    height: 100%;
+}
+.sobre-pessoa {
+    height: 170px;
+    padding: 15px;
+    text-align: center;
+}
+.informacao-pessoa {
+    font-size: 15px;
+    text-align: justify;
+    color: rgb(37, 37, 37);
+}
+.nome-pessoa {
+    font-size: 32px;
+    margin: 15px 0;
+    text-align: left;
+}
+.descricao-pessoa {
+    font-size: 20px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    color: rgb(37, 37, 37);
+}
+.ver-mais-pessoa {
+    text-align: center;
+    align-items: center;
+}
+.ver-mais-pessoa button {
+    margin-right: 15px;
+    width: 250px;
+    height: 50px;
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #122526;
+    border: 2px solid #122526;
+    border-radius: 20px;
+    cursor: pointer;
+    background: transparent;
+}
+.ver-mais-pessoa button:hover {
+    color: #ffffff;
+    background: #122526;
+}
+.cadastrar-pessoa {
+    text-align: end;
+}
+.btn-cadastrar-pessoa {
+    padding: 10px;
+    font-size: 20px;
+    margin-right: 50px;
+    align-items: flex-end;
+    border-radius: 15px;
+    text-decoration: none;
+    background: #1594A6;
+    color: white;
+}
+.btn-cadastrar-pessoa:hover {
+    background: #122526;
+    color: white;
+}
+/* FIM DE LISTAR PESSOA*/
+
+
+
+/* LISTA DE VAGAS */
+.secao-vaga {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    padding: 50px 0 50px 0;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #fff;
+}
+.inicio-vaga {
+    margin: auto;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.titulo-home-vaga {
+    width: 100%;
+    text-align: center;
+    color: #122526;
+    font-size: 50px;
+}
+.ver-mais-vaga {
+    text-align: center;
+    align-items: center;
+}
+.ver-mais-vaga button {
+    margin-right: 15px;
+    width: 250px;
+    height: 50px;
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #122526;
+    border: 2px solid #122526;
+    border-radius: 20px;
+    cursor: pointer;
+    background: transparent;
+}
+.ver-mais-vaga button:hover {
+    color: #ffffff;
+    background: #122526;
+}
+.cadastrar-vaga {
+    text-align: end;
+}
+.btn-cadastrar-vaga {
+    padding: 10px;
+    font-size: 20px;
+    margin-right: 50px;
+    align-items: flex-end;
+    border-radius: 15px;
+    text-decoration: none;
+    background: #1594A6;
+    color: white;
+}
+.btn-cadastrar-vaga:hover {
+    background: #122526;
+    color: white;
+}
+/* FIM LISTAR VAGAS */
