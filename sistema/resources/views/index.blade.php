@@ -13,38 +13,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
     <!--FONTAWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <!--SLICK CSS-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
 </head>
 <body class="fundo">
 
     <!--NAVBAR-->
     <div class="navbar">
-        <img src="../img/Frame.svg" width="30px">
+        <h1 class="logo">RepuBlikANS</h1>
         <ul>
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Contato</a></li>
-            @if (Route::has('login'))
-                @auth
-                    <li><a href="{{ url('/dashboard') }}" class="botao-entrar">Perfil</a></li>
-                    <li>
-                        <form action="/logout" method="POST">
-                            @csrf
-                            <a href="/logout" 
-                                class="botao-entrar"
-                                onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                                Sair
-                            </a>
-                        </form>
-                    </li>
-                @else
-                    <li><a href="{{ route('login') }}" class="botao-entrar">Entrar</a></li>
-
-                    @if (Route::has('register'))
-                        <li><a href="{{ route('register') }}" class="botao-entrar">Cadastrar</a></li>
-                    @endif
-                @endauth
-            @endif
+            <li><a href="index.html" class="botao-navbar">Início</a></li>
+            <li><a href="ver-mais-vagas.html" class="botao-navbar">Vagas</a></li>
+            <li><a href="ver-mais-pessoas.html" class="botao-navbar">Pessoas</a></li>
         </ul>
     </div>
 
@@ -53,72 +34,210 @@
         <!--ESQUERDA-->
         <div class="coluna-esquerda">
             <h1>
-                Encontre um <br>
-                alojamento ou um <br> 
-                colega de quarto aqui!
+                Encontre uma vaga ou um <br>
+                colega de quarto de forma <br>
+                rápida e fácil usando nosso <br>
+                sistema.
             </h1>
-            <div class="input-pesquisar">
-                <input type="text" placeholder="Ex: Apartamento 2 quartos">
-                <!--<img src="../public/img/Group.png">-->
-            </div>
-            <div class="botao-buscar">
-                <button type="button">Buscar</button>
-            </div>
         </div>
         <!--DIREITO-->
         <div class="coluna-direita">
-            <img src="../img/Vector.png">
+            <img src="../img/paisagem.png">
         </div>
     </div>
     
-    <!--SEÇÃO 1-->
-    <div class="secao-1">
-        <h1 class="titulo-cards-1">Adicionados recentes</h1>
-        <!--CARD 1-->
-        <div class="card card-1">
-            <!--HEADER-->
-            <div class="card-header-1">
-                <img src="../img/image 1.png" class="card-img-1">
-            </div>
-            <!--BODY-->
-            <div class="card-body-1">
-                <div class="card-info-1">
-                    <i class="fa-solid fa-users"></i>
-                    <h4>R$136</h4>
+    <!--VAGAS-->
+    <div class="container-vaga">
+        <h1 class="titulo-home-vaga">Adicionados recentes</h1>
+        <!--CARROSEL-->
+        <div class="galeria">
+            <!--CARD 1-->
+            <div class="card-vaga">
+                <!--HEADER-->
+                <div class="foto-vaga">
+                    <img src="../img/lugar-1.png" class="tamanho-vaga">
                 </div>
-                <div class="descricao-1">
-                    <h2 class="card-titulo-1">Apartamento simples</h2>
-                    <h3 class="card-texto-1">Bairro Fátima</h3>
+                <!--BODY-->
+                <div class="sobre-vaga">
+                    <div class="informacao-vaga">
+                        <i class="fa-solid fa-person tam-vaga"> 2</i>
+                        <i class="fa-solid fa-person-dress tam-vaga"> 0</i>
+                        <h4 class="valor-vaga">R$ 136</h4>
+                    </div>
+                    <div class="descricao-vaga">
+                        <h2 class="titulo-vaga">Apartamento simples</h2>
+                        <h3 class="local-vaga">Condomínio Jardins</h3>
+                    </div>
+                </div>
+                <!--FOOTER-->
+                <div class="ver-mais-vaga">
+                    <button>Ver mais</button>
                 </div>
             </div>
-            <!--FOOTER-->
-            <div class="botao-entrar-contato-1">
-                <button>Entre em contato</button>
+            
+            <!--CARD 2-->
+            <div class="card-vaga">
+                <!--HEADER-->
+                <div class="foto-vaga">
+                    <img src="../img/lugar-2.png" class="tamanho-vaga">
+                </div>
+                <!--BODY-->
+                <div class="sobre-vaga">
+                    <div class="informacao-vaga">
+                        <i class="fa-solid fa-person tam-vaga"> 0 </i>
+                        <i class="fa-solid fa-person-dress tam-vaga"> 2</i>
+                        <h4 class="valor-vaga">R$ 100</h4>
+                    </div>
+                    <div class="descricao-vaga">
+                        <h2 class="titulo-vaga">Casa pequena</h2>
+                        <h3 class="local-vaga">Bairro Floresta</h3>
+                    </div>
+                </div>
+                <!--FOOTER-->
+                <div class="ver-mais-vaga">
+                    <button>Ver mais</button>
+                </div>
             </div>
+            <!--CARD 3-->
+            <div class="card-vaga">
+                <!--HEADER-->
+                <div class="foto-vaga">
+                    <img src="../img/lugar-3.png" class="tamanho-vaga">
+                </div>
+                <!--BODY-->
+                <div class="sobre-vaga">
+                    <div class="informacao-vaga">
+                        <i class="fa-solid fa-person tam-vaga"> 5 </i>
+                        <i class="fa-solid fa-person-dress tam-vaga"> 2</i>
+                        <h4 class="valor-vaga">R$ 300</h4>
+                    </div>
+                    <div class="descricao-vaga">
+                        <h2 class="titulo-vaga">Local elegante</h2>
+                        <h3 class="local-vaga">Bairro Prado</h3>
+                    </div>
+                </div>
+                <!--FOOTER-->
+                <div class="ver-mais-vaga">
+                    <button>Ver mais</button>
+                </div>
+            </div>
+            <!--CARD 4-->
+            <div class="card-vaga">
+                <!--HEADER-->
+                <div class="foto-vaga">
+                    <img src="../img/lugar-3.png" class="tamanho-vaga">
+                </div>
+                <!--BODY-->
+                <div class="sobre-vaga">
+                    <div class="informacao-vaga">
+                        <i class="fa-solid fa-person tam-vaga"> 5 </i>
+                        <i class="fa-solid fa-person-dress tam-vaga"> 2</i>
+                        <h4 class="valor-vaga">R$ 300</h4>
+                    </div>
+                    <div class="descricao-vaga">
+                        <h2 class="titulo-vaga">Local elegante</h2>
+                        <h3 class="local-vaga">Bairro Prado</h3>
+                    </div>
+                </div>
+                <!--FOOTER-->
+                <div class="ver-mais-vaga">
+                    <button>Ver mais</button>
+                </div>
+            </div>
+            
+        </div>
+        <div class="ver-todas">
+            <a href="" class="btn-ver-todas">VER TODAS</a>
         </div>
     </div>
 
-    <!--SEÇÃO 2-->
-    <div class="secao-2">
-        <h1 class="titulo-cards-2">Encontre colegas de quarto</h1>
+    <!--PESSOAS-->
+    <div class="container-pessoa">
+        <h1 class="titulo-home-pessoa">Encontre colegas de quarto</h1>
+        
         <!--CARD 1-->
-        <div class="card card-2">
+        <div class="card-pessoa">
             <!--HEADER-->
-            <div class="card-header-2">
-                <img src="../img/pessoa-1.png" class="card-img-2">
+            <div class="foto-pessoa">
+                <img src="../img/pessoa-1.png" class="tamanho-pessoa">
             </div>
             <!--BODY-->
-            <div class="card-body-2">
-                <div class="descricao-2">
-                    <h2 class="card-titulo-2">Bianca Almeida</h2>
-                    <h5 class="card-texto-2">Procurando apartamento próximo a UESPI, no Campus de Piripiri - Piauí.</h5>
+            <div class="sobre-pessoa">
+                <div class="informacao-pessoa">
+                    <h2 class="nome-pessoa">Bianca Almeida</h2>
+                    <h5 class="descricao-pessoa">Procurando apartamento próximo a UESPI no Campus de Pirajá.</h5>
                 </div>
             </div>
             <!--FOOTER-->
-            <div class="botao-entrar-contato-2">
-                <button>Entre em contato</button>
+            <div class="ver-mais-pessoa">
+                <button>Ver mais</button>
             </div>
         </div>
+
+        <!--CARD 2-->
+        <div class="card-pessoa">
+            <!--HEADER-->
+            <div class="foto-pessoa">
+                <img src="../img/pessoa-2.png" class="tamanho-pessoa">
+            </div>
+            <!--BODY-->
+            <div class="sobre-pessoa">
+                <div class="informacao-pessoa">
+                    <h2 class="nome-pessoa">Bianca Almeida</h2>
+                    <h5 class="descricao-pessoa">Procurando apartamento próximo a UESPI no Campus de Pirajá.</h5>
+                </div>
+            </div>
+            <!--FOOTER-->
+            <div class="ver-mais-pessoa">
+                <button>Ver mais</button>
+            </div>
+        </div>
+        <!--CARD 3-->
+        <div class="card-pessoa">
+            <!--HEADER-->
+            <div class="foto-pessoa">
+                <img src="../img/pessoa-3.png" class="tamanho-pessoa">
+            </div>
+            <!--BODY-->
+            <div class="sobre-pessoa">
+                <div class="informacao-pessoa">
+                    <h2 class="nome-pessoa">Bianca Almeida</h2>
+                    <h5 class="descricao-pessoa">Procurando apartamento próximo a UESPI no Campus de Pirajá.</h5>
+                </div>
+            </div>
+            <!--FOOTER-->
+            <div class="ver-mais-pessoa">
+                <button>Ver mais</button>
+            </div>
+        </div>
+        <div class="ver-todas">
+            <a href="" class="btn-ver-todas">VER TODAS</a>
+        </div>
     </div>
+
+    <!--RODAPÉ-->
+    <div class="rodape">
+        <div class="footer-content">
+            <h3>RepuBlikANS</h3>
+            <hr>
+            <ul class="social">
+                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+               <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--SCRIPT-->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script type="text/javascript">
+        $('.galeria').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1
+        });
+    </script>
+
 </body>
 </html>
