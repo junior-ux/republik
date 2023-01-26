@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\VagaController;
+use App\Http\Controllers\PessoaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +19,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/vagas', function () {
+    return view('ver-mais-vagas');
+});
+
+Route::get('/pessoas', function () {
+    return view('ver-mais-pessoas');
+});
+
+Route::post('/vaga', [VagaController::class, 'store']);
+Route::post('/pessoa', [PessoaController::class, 'store']);
 
 Route::middleware([
     'auth:sanctum',
