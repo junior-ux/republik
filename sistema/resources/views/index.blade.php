@@ -23,9 +23,9 @@
     <div class="navbar">
         <h1 class="logo">RepuBlikANS</h1>
         <ul>
-            <li><a href="index.html" class="botao-navbar">Início</a></li>
-            <li><a href="ver-mais-vagas.html" class="botao-navbar">Vagas</a></li>
-            <li><a href="ver-mais-pessoas.html" class="botao-navbar">Pessoas</a></li>
+            <li><a href="/" class="botao-navbar">Início</a></li>
+            <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
+            <li><a href="/pessoas" class="botao-navbar">Pessoas</a></li>
         </ul>
     </div>
 
@@ -34,9 +34,9 @@
         <!--ESQUERDA-->
         <div class="coluna-esquerda">
             <h1>
-                Encontre uma vaga ou um <br>
-                colega de quarto de forma <br>
-                rápida e fácil usando nosso <br>
+                Encontre uma vaga ou um
+                colega de quarto de forma
+                rápida e fácil usando nosso
                 sistema.
             </h1>
         </div>
@@ -147,7 +147,7 @@
             
         </div>
         <div class="ver-todas">
-            <a href="" class="btn-ver-todas">VER TODAS</a>
+            <a href="/vagas" class="btn-ver-todas">VER TODAS</a>
         </div>
     </div>
 
@@ -211,7 +211,7 @@
             </div>
         </div>
         <div class="ver-todas">
-            <a href="" class="btn-ver-todas">VER TODAS</a>
+            <a href="/pessoas" class="btn-ver-todas">VER TODAS</a>
         </div>
     </div>
 
