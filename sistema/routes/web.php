@@ -20,16 +20,19 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/vagas', function () {
+/*Route::get('/vagas', function () {
     return view('ver-mais-vagas');
-});
+});*/
 
-Route::get('/pessoas', function () {
+/*Route::get('/pessoas', function () {
     return view('ver-mais-pessoas');
-});
+});*/
+Route::get('/pessoas', [PessoaController::class, 'pessoas'])->name('pessoas');
+Route::get('/vagas', [VagaController::class, 'vagas'])->name('vagas');
 
 Route::post('/vaga', [VagaController::class, 'store']);
 Route::post('/pessoa', [PessoaController::class, 'store']);
+
 
 Route::middleware([
     'auth:sanctum',

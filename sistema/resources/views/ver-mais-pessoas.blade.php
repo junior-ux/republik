@@ -38,62 +38,48 @@
             </div>
             <h1 class="titulo-pagina">Todas as pessoas</h1>
         </div>
-        <!--CARD 1-->
-        <div class="card-pessoa">
-            <!--HEADER-->
-            <div class="foto-pessoa">
-                <img src="../img/pessoa-1.png" class="tamanho-pessoa">
-            </div>
-            <!--BODY-->
-            <div class="sobre-pessoa">
-                <div class="informacao-pessoa">
-                    <h2 class="nome-pessoa">Bianca Almeida</h2>
-                    <h5 class="descricao-pessoa">Procurando apartamento próximo a UESPI no Campus de Pirajá.</h5>
-                </div>
-            </div>
-            <!--FOOTER-->
-            <div class="ver-mais-pessoa">
-                <button>Ver mais</button>
-            </div>
-        </div>
 
-        <!--CARD 2-->
-        <div class="card-pessoa">
-            <!--HEADER-->
-            <div class="foto-pessoa">
-                <img src="../img/pessoa-2.png" class="tamanho-pessoa">
-            </div>
-            <!--BODY-->
-            <div class="sobre-pessoa">
-                <div class="informacao-pessoa">
-                    <h2 class="nome-pessoa">Gustavo Silva</h2>
-                    <h5 class="descricao-pessoa">Busco vaga por 3 meses próximo a UFPI.</h5>
+        @foreach ($pessoas as $pessoa)
+            <!--CARD 1-->
+            <div class="card-pessoa">
+                <!--HEADER-->
+                <div class="foto-pessoa">
+                    <img src="../img/pessoa-1.png" class="tamanho-pessoa">
+                </div>
+                <!--BODY-->
+                <div class="sobre-pessoa">
+                    <div class="informacao-pessoa">
+                        <h2 class="nome-pessoa">{{ $pessoa->nome }}</h2>
+                        <h5 class="descricao-pessoa">{{ $pessoa->sobre }}</h5>
+                    </div>
+                </div>
+                <!--FOOTER-->
+                <div class="ver-mais-pessoa">
+                    <button type="button" class="btn-cadastrar-vaga" data-bs-toggle="modal" data-bs-target="#verPessoaModal{{ $pessoa->id }}">
+                        Ver mais
+                    </button>
                 </div>
             </div>
-            <!--FOOTER-->
-            <div class="ver-mais-pessoa">
-                <button>Ver mais</button>
-            </div>
-        </div>
 
-        <!--CARD 3-->
-        <div class="card-pessoa">
-            <!--HEADER-->
-            <div class="foto-pessoa">
-                <img src="../img/pessoa-3.png" class="tamanho-pessoa">
-            </div>
-            <!--BODY-->
-            <div class="sobre-pessoa">
-                <div class="informacao-pessoa">
-                    <h2 class="nome-pessoa">Hugo Andrade</h2>
-                    <h5 class="descricao-pessoa">Alguém anima alugar um apartamento com 3 quartos perto do centro de Piripiri?</h5>
+            <!-- Modal ver pessoa -->
+            <div class="modal fade" id="verPessoaModal{{ $pessoa->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $pessoa->nome }}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>{{ $pessoa->sobre }}</h4>
+                            <a href="https://{{ $pessoa->instagram }}" target="_blank" class="btn btn-primary"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="https://wa.me/+55{{ $pessoa->telefone }}?text=Ol%C3%A1,%20vim%20pelo%20RepuBlikANS%20e%20tenho%20interesse%20em%20dividir%20aluguel%20com%20voc%C3%AA.%20Podemos%20conversar?" target="_blank" class="btn btn-primary"><i class="me-2 fa-brands fa-whatsapp"></i> Entrar em contato</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!--FOOTER-->
-            <div class="ver-mais-pessoa">
-                <button>Ver mais</button>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <!-- Modal cadastrar pessoa -->

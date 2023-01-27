@@ -21,4 +21,10 @@ class PessoaController extends Controller
 
         return redirect('/pessoas');
     }
+
+    public function pessoas() {
+        $pessoas = Pessoa::all();
+
+        return view('ver-mais-pessoas', ['pessoas' => $pessoas]);
+    }
 }
