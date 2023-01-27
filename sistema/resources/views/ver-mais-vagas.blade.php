@@ -39,74 +39,30 @@
             <h1 class="titulo-pagina">Todas as vagas</h1>
         </div>
         
-        <div class="card-vaga">
-            <!--HEADER-->
-            <div class="foto-vaga">
-                <img src="../img/lugar-1.png" class="tamanho-vaga">
-            </div>
-            <!--BODY-->
-            <div class="sobre-vaga">
-                <div class="informacao-vaga">
-                    <i class="fa-solid fa-person tam-vaga"> 2</i>
-                    <i class="fa-solid fa-person-dress tam-vaga"> 0</i>
-                    <h4 class="valor-vaga">R$ 136</h4>
+        @foreach ($vagas as $vaga)
+            <div class="card-vaga">
+                <!--HEADER-->
+                <div class="foto-vaga">
+                    <img src="../img/lugar-1.png" class="tamanho-vaga">
                 </div>
-                <div class="descricao-vaga">
-                    <h2 class="titulo-vaga">Apartamento simples</h2>
-                    <h3 class="local-vaga">Condomínio Jardins</h3>
+                <!--BODY-->
+                <div class="sobre-vaga">
+                    <div class="informacao-vaga">
+                        <i class="fa-solid fa-person tam-vaga"> {{ $vaga->qtd_homem }}</i>
+                        <i class="fa-solid fa-person-dress tam-vaga"> {{ $vaga->qtd_mulher }}</i>
+                        <h4 class="valor-vaga">R$ {{ $vaga->valor }}</h4>
+                    </div>
+                    <div class="descricao-vaga">
+                        <h2 class="titulo-vaga">{{ $vaga->descricao }}</h2>
+                        <h3 class="local-vaga">{{ $vaga->cidade }} - {{ $vaga->estado }}</h3>
+                    </div>
                 </div>
-            </div>
-            <!--FOOTER-->
-            <div class="ver-mais-vaga">
-                <button>Ver mais</button>
-            </div>
-        </div>
-       
-        <div class="card-vaga">
-            <!--HEADER-->
-            <div class="foto-vaga">
-                <img src="../img/lugar-2.png" class="tamanho-vaga">
-            </div>
-            <!--BODY-->
-            <div class="sobre-vaga">
-                <div class="informacao-vaga">
-                    <i class="fa-solid fa-person tam-vaga"> 0 </i>
-                    <i class="fa-solid fa-person-dress tam-vaga"> 2</i>
-                    <h4 class="valor-vaga">R$ 100</h4>
-                </div>
-                <div class="descricao-vaga">
-                    <h2 class="titulo-vaga">Casa pequena</h2>
-                    <h3 class="local-vaga">Bairro Floresta</h3>
+                <!--FOOTER-->
+                <div class="ver-mais-vaga">
+                    <button>Ver mais</button>
                 </div>
             </div>
-            <!--FOOTER-->
-            <div class="ver-mais-vaga">
-                <button>Ver mais</button>
-            </div>
-        </div>
-        
-        <div class="card-vaga">
-            <!--HEADER-->
-            <div class="foto-vaga">
-                <img src="../img/lugar-3.png" class="tamanho-vaga">
-            </div>
-            <!--BODY-->
-            <div class="sobre-vaga">
-                <div class="informacao-vaga">
-                    <i class="fa-solid fa-person tam-vaga"> 5 </i>
-                    <i class="fa-solid fa-person-dress tam-vaga"> 2</i>
-                    <h4 class="valor-vaga">R$ 300</h4>
-                </div>
-                <div class="descricao-vaga">
-                    <h2 class="titulo-vaga">Local elegante</h2>
-                    <h3 class="local-vaga">Bairro Prado</h3>
-                </div>
-            </div>
-            <!--FOOTER-->
-            <div class="ver-mais-vaga">
-                <button>Ver mais</button>
-            </div>
-        </div>
+        @endforeach
         
     </div>
 

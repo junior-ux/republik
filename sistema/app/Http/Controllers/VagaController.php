@@ -30,4 +30,10 @@ class VagaController extends Controller
 
         return redirect('/vagas');
     }
+
+    public function vagas() {
+        $vagas = Vaga::all();
+
+        return view('ver-mais-vagas', ['vagas' => $vagas]);
+    }
 }
