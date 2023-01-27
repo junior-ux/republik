@@ -26,6 +26,16 @@ class VagaController extends Controller
         $vaga->qtd_homem = $request->qtd_homem;
         $vaga->qtd_mulher = $request->qtd_mulher;
 
+        //salvar image
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img/vagas'), $imageName);
+
+            $vaga->image = $imageName;
+        }
+
         $vaga->save();
 
         return redirect('/vagas');

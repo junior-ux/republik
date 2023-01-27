@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string("valor");
             $table->integer("qtd_homem");
             $table->integer("qtd_mulher");
+            $table->string("image");
         });
     }
 

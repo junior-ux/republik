@@ -43,7 +43,7 @@
             <div class="card-vaga">
                 <!--HEADER-->
                 <div class="foto-vaga">
-                    <img src="../img/lugar-1.png" class="tamanho-vaga">
+                    <img src="../img/vagas/{{ $vaga->image }}" class="tamanho-vaga">
                 </div>
                 <!--BODY-->
                 <div class="sobre-vaga">
@@ -75,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/vaga" method="POST">
+                <form action="/vaga" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                     <label for="nome" class="form-label">Nome do proprietário:</label>
@@ -128,6 +128,10 @@
                     <div class="mb-3">
                         <label for="qtd_mulher" class="form-label">Quantidade de mulheres:</label>
                         <input type="number" class="form-control" id="qtd_mulher" name="qtd_mulher" placeholder="Quantidade de mulheres">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Uma foto do local:</label>
+                        <input type="file" class="form-control-file" id="image" name="image">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
