@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string("sobre");
             $table->date('nascimento')->nullable();
             $table->string("instagram");
+            $table->string("image");
         });
     }
 

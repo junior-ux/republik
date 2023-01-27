@@ -44,7 +44,7 @@
             <div class="card-pessoa">
                 <!--HEADER-->
                 <div class="foto-pessoa">
-                    <img src="../img/pessoa-1.png" class="tamanho-pessoa">
+                    <img src="../img/pessoas/{{ $pessoa->image }}" class="tamanho-pessoa">
                 </div>
                 <!--BODY-->
                 <div class="sobre-pessoa">
@@ -91,7 +91,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/pessoa" method="POST">
+                <form action="/pessoa" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome:</label>
@@ -116,6 +116,10 @@
                     <div class="mb-3">
                         <label for="instagram" class="form-label">Instagram:</label>
                         <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Instagram">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Uma foto sua:</label>
+                        <input type="file" class="form-control-file" id="image" name="image">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
