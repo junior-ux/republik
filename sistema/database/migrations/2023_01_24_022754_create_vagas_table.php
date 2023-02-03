@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('vagas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string("nome");
             $table->string("endereco");
             $table->integer("numero");
