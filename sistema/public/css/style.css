@@ -50,6 +50,10 @@ ul li a {
     color: #54CFDB;
     background: transparent;
 }
+.autenticacao{
+    border: 1px solid #54CFDB;
+    color: #54CFDB;
+}
 .fundo {
     background-color: #122526;
 }

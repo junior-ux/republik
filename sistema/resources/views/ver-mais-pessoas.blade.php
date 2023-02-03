@@ -24,6 +24,25 @@
             <li><a href="/" class="botao-navbar">Início</a></li>
             <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
             <li><a href="/pessoas" class="botao-navbar">Pessoas</a></li>
+            @if (Route::has('login'))
+                @auth
+                    <li><a href="/perfil" class="botao-navbar autenticacao">Perfil</a></li>
+                    <li>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <a href="/logout"
+                                class="botao-navbar autenticacao"
+                                onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                                Sair
+                            </a>
+                        </form>
+                    </li>
+                @else
+                    <li><a href="/login" class="botao-navbar autenticacao">Login</a></li>
+                    <li><a href="/register" class="botao-navbar autenticacao">Registrar</a></li>
+                @endauth
+            @endif
         </ul>
     </div>
 

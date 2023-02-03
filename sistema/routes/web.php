@@ -33,6 +33,10 @@ Route::get('/vagas', [VagaController::class, 'vagas'])->name('vagas');
 Route::post('/vaga', [VagaController::class, 'store']);
 Route::post('/pessoa', [PessoaController::class, 'store']);
 
+Route::get('/perfil', [VagaController::class, 'perfil'])->middleware('auth');
+Route::delete('/vaga/{id}', [VagaController::class, 'destroy']);
+Route::put('/update/{id}', [VagaController::class, 'update'])->middleware('auth');
+
 
 Route::middleware([
     'auth:sanctum',
