@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
+    <!-- FAVICON -->
+    <link rel="icon" href="/img/logo.png">
     <!--FONTAWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
@@ -52,10 +54,7 @@
             @auth
                 <div class="inicio-vaga">
                     <div class="cadastrar-vaga">
-                        <!--<a href="" class="btn-cadastrar-vaga">Cadastrar vagas</a>-->
-                        <button type="button" class="btn-cadastrar-vaga" data-bs-toggle="modal" data-bs-target="#vagasModal">
-                            Cadastrar vaga
-                        </button>
+                        <a type="button" class="btn-cadastrar-vaga" data-bs-toggle="modal" data-bs-target="#vagasModal">Cadastrar vaga</a>
                     </div>
                     <h1 class="titulo-pagina">Todas as vagas</h1>
                 </div>
@@ -76,13 +75,95 @@
                         <h4 class="valor-vaga">R$ {{ $vaga->valor }}</h4>
                     </div>
                     <div class="descricao-vaga">
-                        <h2 class="titulo-vaga">{{ $vaga->descricao }}</h2>
-                        <h3 class="local-vaga">{{ $vaga->cidade }} - {{ $vaga->estado }}</h3>
+                        <h2 class="titulo-vaga">{{ $vaga->cidade }}</h2>
+                        <h3 class="local-vaga">{{ $vaga->bairro }} - {{ $vaga->estado }}</h3>
                     </div>
                 </div>
                 <!--FOOTER-->
                 <div class="ver-mais-vaga">
-                    <button>Ver mais</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#verMaisDaVaga{{$vaga->id}}">Ver mais</button>
+                </div>
+            </div>
+            <!-- MODAL VER MAIS DA VAGA -->
+            <div class="modal fade" id="verMaisDaVaga{{$vaga->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"> <strong> Ver mais </strong></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <label for="nome" class="form-label">Nome do proprietário:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->nome }}" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <label for="cidade" class="form-label">Cidade:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->cidade }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label for="numero" class="form-label">Número:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->numero }}" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="bairro" class="form-label">Bairro:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->bairro }}" disabled>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="estado" class="form-label">Estado:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->estado }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="referencia" class="form-label">Referência:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->referencia }}" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <label for="endereco" class="form-label">Endereço:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->endereco }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <label for="email" class="form-label">E-mail:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->email }}" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <label for="telefone" class="form-label">Telefone:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->telefone }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="qtd_homem" class="form-label">Quantidade de homens:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->qtd_homem }}" disabled>
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="qtd_mulher" class="form-label">Quantidade de mulheres:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->qtd_mulher }}" disabled>
+                                    </div>
+                                    <div class="col-2">
+                                        <label for="valor" class="form-label">Valor:</label>
+                                        <input type="text" class="form-control" value="{{ $vaga->valor }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="descricao" class="form-label">Descrição:</label>
+                                        <textarea class="form-control" cols="20" rows="10" disabled>{{ $vaga->descricao }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         @endforeach
