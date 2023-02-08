@@ -70,22 +70,24 @@
         <h1 class="titulo-home-vaga">Adicionados recentes</h1>
         <!--CARROSEL-->
         <div class="galeria">
+            
+            @foreach ($vagas as $vaga)
             <!--CARD 1-->
             <div class="card-vaga">
                 <!--HEADER-->
                 <div class="foto-vaga">
-                    <img src="../img/lugar-1.png" class="tamanho-vaga">
+                    <img src="../img/vagas/{{ $vaga->image }}" class="tamanho-vaga">
                 </div>
                 <!--BODY-->
                 <div class="sobre-vaga">
                     <div class="informacao-vaga">
-                        <i class="fa-solid fa-person tam-vaga"> 2</i>
-                        <i class="fa-solid fa-person-dress tam-vaga"> 0</i>
-                        <h4 class="valor-vaga">R$ 136</h4>
+                        <i class="fa-solid fa-person tam-vaga"> {{ $vaga->qtd_homem }}</i>
+                        <i class="fa-solid fa-person-dress tam-vaga"> {{ $vaga->qtd_mulher }}</i>
+                        <h4 class="valor-vaga">R$ {{ $vaga->valor }}</h4>
                     </div>
                     <div class="descricao-vaga">
-                        <h2 class="titulo-vaga">Apartamento simples</h2>
-                        <h3 class="local-vaga">Condomínio Jardins</h3>
+                        <h2 class="titulo-vaga">{{ $vaga->descricao }}</h2>
+                        <h3 class="local-vaga">{{ $vaga->cidade }} - {{ $vaga->estado }}</h3>
                     </div>
                 </div>
                 <!--FOOTER-->
@@ -93,14 +95,15 @@
                     <button>Ver mais</button>
                 </div>
             </div>
+            @endforeach
             
-            <!--CARD 2-->
+            <!--CARD 2--
             <div class="card-vaga">
-                <!--HEADER-->
+                <!--HEADER--
                 <div class="foto-vaga">
                     <img src="../img/lugar-2.png" class="tamanho-vaga">
                 </div>
-                <!--BODY-->
+                <!--BODY--
                 <div class="sobre-vaga">
                     <div class="informacao-vaga">
                         <i class="fa-solid fa-person tam-vaga"> 0 </i>
@@ -112,18 +115,18 @@
                         <h3 class="local-vaga">Bairro Floresta</h3>
                     </div>
                 </div>
-                <!--FOOTER-->
+                <!--FOOTER--
                 <div class="ver-mais-vaga">
                     <button>Ver mais</button>
                 </div>
             </div>
-            <!--CARD 3-->
+            <!--CARD 3--
             <div class="card-vaga">
-                <!--HEADER-->
+                <!--HEADER--
                 <div class="foto-vaga">
                     <img src="../img/lugar-3.png" class="tamanho-vaga">
                 </div>
-                <!--BODY-->
+                <!--BODY--
                 <div class="sobre-vaga">
                     <div class="informacao-vaga">
                         <i class="fa-solid fa-person tam-vaga"> 5 </i>
@@ -135,18 +138,18 @@
                         <h3 class="local-vaga">Bairro Prado</h3>
                     </div>
                 </div>
-                <!--FOOTER-->
+                <!--FOOTER-
                 <div class="ver-mais-vaga">
                     <button>Ver mais</button>
                 </div>
             </div>
-            <!--CARD 4-->
+            <!--CARD 4
             <div class="card-vaga">
-                <!--HEADER-->
+                <!--HEADER--
                 <div class="foto-vaga">
                     <img src="../img/lugar-3.png" class="tamanho-vaga">
                 </div>
-                <!--BODY-->
+                <!--BODY--
                 <div class="sobre-vaga">
                     <div class="informacao-vaga">
                         <i class="fa-solid fa-person tam-vaga"> 5 </i>
@@ -158,11 +161,12 @@
                         <h3 class="local-vaga">Bairro Prado</h3>
                     </div>
                 </div>
-                <!--FOOTER-->
+                <!--FOOTER
                 <div class="ver-mais-vaga">
                     <button>Ver mais</button>
                 </div>
             </div>
+            -->
             
         </div>
         <div class="ver-todas">
