@@ -16,9 +16,11 @@ use App\Http\Controllers\PessoaController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('index');
-});
+});*/
+
+Route::get('/', [VagaController::class, 'ultimasVagas']);
 
 /*Route::get('/vagas', function () {
     return view('ver-mais-vagas');
