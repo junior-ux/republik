@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
+    <!-- FAVICON -->
+    <link rel="icon" href="/img/logo.png">
     <!--FONTAWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
@@ -51,9 +53,7 @@
         <div class="inicio-pessoa">
             <div class="cadastrar-pessoa">
                 <!--<a href="" class="btn-cadastrar-pessoa">Cadastrar pessoas</a>-->
-                <button type="button" class="btn-cadastrar-vaga" data-bs-toggle="modal" data-bs-target="#pessoaModal">
-                    Cadastrar pessoa
-                </button>
+                <a type="button" class="btn-cadastrar-vaga" data-bs-toggle="modal" data-bs-target="#pessoaModal">Cadastrar pessoa</a>
             </div>
             <h1 class="titulo-pagina">Todas as pessoas</h1>
         </div>
