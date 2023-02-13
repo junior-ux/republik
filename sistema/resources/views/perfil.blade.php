@@ -7,7 +7,7 @@
     <title>Perfil</title>
     <!--CSS-->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <!--BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <!--FONT GOOGLE-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
 
     <!--NAVBAR-->
     <div class="navbar">
-        <h1 class="logo">RepuBlikANS</h1>
+        <h3 class="logo">RepuBlikANS</h3>
         <ul>
             <li><a href="/" class="botao-navbar">Início</a></li>
             <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
@@ -66,32 +66,42 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Nome</label>
-                                    <input type="text" class="form-control" value="Usuário Tal" disabled>
+                                    <label class="texto-perfil-info">Nome</label>
+                                    <div class="info-perfil">
+                                        Usuário
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Telefone</label>
-                                    <input type="text" class="form-control" value="(86) 98566-4344" disabled>
+                                    <label class="texto-perfil-info">Telefone</label>
+                                    <div class="info-perfil">
+                                        (99) 99999-9999
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>E-mail</label>
-                                    <input type="text" class="form-control" value="usuariotal@gmail.com" disabled>
+                                    <label class="texto-perfil-info">E-mail</label>
+                                    <div class="info-perfil">
+                                        usuario@gmail.com
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Local</label>
-                                    <input type="text" class="form-control" value="Piripiri" disabled>
+                                    <label class="texto-perfil-info">Endereço</label>
+                                    <div class="info-perfil">
+                                        Piripiri
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Biografia</label>
-                                    <textarea class="form-control" rows="4" disabled>Sou uma pessoa de bom coração e estou disposto a pagar seu aluguel sem estresse.</textarea>
+                                    <label class="texto-perfil-info">Biografia</label>
+                                    <div class="info-perfil">
+                                        Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.3
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -127,10 +137,10 @@
                     </div>
                     <!--FOOTER-->
                     <div class="ver-mais-vaga text-center">
-                        <a class="btn btn-warning mb-1" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$vaga->id}}">
+                        <a class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$vaga->id}}">
                             <i class="fa-solid fa-pen"></i> Editar
                         </a>
-                        <a class="btn btn-danger mb-1" data-bs-toggle="modal" data-bs-target="#modalDeleteCamp{{$vaga->id}}">
+                        <a class="btn btn-danger m-2" data-bs-toggle="modal" data-bs-target="#modalDeleteCamp{{$vaga->id}}">
                             <i class="fa-solid fa-trash"></i> Apagar
                         </a>
                     </div>
@@ -164,69 +174,70 @@
                 <div class="modal fade" id="modalEditCamp{{$vaga->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar vaga</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-centro">
+                                <h1 class="titulo-modal-cadastrar-vaga" id="exampleModalLabel">Você está editando uma vaga</h1>
                             </div>
                             <div class="modal-body">
                                 <form action="/update/{{ $vaga->id }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <div class="mb-3">
-                                    <label for="nome" class="form-label">Nome do proprietário:</label>
-                                    <input type="text" class="form-control" id="nome" name="nome" required placeholder="Nome do proprietário" value="{{ $vaga->nome }}">
+                                    <div class="row">
+                                        <div class="col-8 mb-3">
+                                            <input type="text" class="form-control" id="nome" name="nome" required placeholder="Nome do proprietário" value="{{ $vaga->nome }}">
+                                        </div>
+                                        <div class="col mb-3">
+                                            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" value="{{ $vaga->telefone }}">
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="endereco" class="form-label">Endereço:</label>
-                                        <input type="text" class="form-control" id="endereco" name="endereco" required placeholder="Endereço" value="{{ $vaga->endereco }}">
+                                    <div class="row">
+                                        <div class="col-4 mb-3">
+                                            <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado" value="{{ $vaga->estado }}">
+                                        </div>
+                                        <div class="col-4 mb-3">
+                                            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" value="{{ $vaga->cidade }}">
+                                        </div>
+                                        <div class="col-4 mb-3">
+                                            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" value="{{ $vaga->bairro }}">
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="numero" class="form-label">Número:</label>
-                                        <input type="number" class="form-control" id="numero" name="numero" required placeholder="Número" value="{{ $vaga->numero }}">
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <input type="text" class="form-control" id="endereco" name="endereco" required placeholder="Endereço" value="{{ $vaga->endereco }}">
+                                        </div>
+                                        <div class="col mb-3">
+                                            <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Referência" value="{{ $vaga->referencia }}">
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="bairro" class="form-label">Bairro:</label>
-                                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" value="{{ $vaga->bairro }}">
+                                    <div class="row">
+                                        <div class="col-4 mb-3">
+                                            <input type="number" class="form-control" id="numero" name="numero" required placeholder="Número" value="{{ $vaga->numero }}">
+                                        </div>
+                                        <div class="col mb-3">
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="E-mail" value="{{ $vaga->email }}">
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="cidade" class="form-label">Cidade:</label>
-                                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" value="{{ $vaga->cidade }}">
+                                    <div class="row">
+                                        <div class="col-8 mb-2">
+                                            <textarea rows="5" style="padding: 11px;" class="form-control" id="descricao" name="descricao" placeholder="Descrição">{{ $vaga->descricao }}</textarea>
+                                        </div>
+                                        <div class="col-4 mb-2">
+                                            <div class="mb-3">
+                                                <input type="number" class="form-control" id="valor" name="valor" placeholder="Valor" value="{{ $vaga->valor }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="number" class="form-control" id="qtd_homem" name="qtd_homem" placeholder="Quant. Homens" value="{{ $vaga->qtd_homem }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="number" class="form-control" id="qtd_mulher" name="qtd_mulher" placeholder="Quant. Mulheres" value="{{ $vaga->qtd_mulher }}">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="estado" class="form-label">Estado:</label>
-                                        <input type="text" class="form-control" id="estado" name="estado" placeholder="estado" value="{{ $vaga->estado }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="referencia" class="form-label">Referência:</label>
-                                        <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Referência" value="{{ $vaga->referencia }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="descricao" class="form-label">Descrição:</label>
-                                        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição" value="{{ $vaga->descricao }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="telefone" class="form-label">Telefone:</label>
-                                        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" value="{{ $vaga->telefone }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">E-mail:</label>
-                                        <input type="text" class="form-control" id="email" name="email" placeholder="E-mail" value="{{ $vaga->email }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="valor" class="form-label">Valor:</label>
-                                        <input type="number" class="form-control" id="valor" name="valor" placeholder="Valor" value="{{ $vaga->valor }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="qtd_homem" class="form-label">Quantidade de homens:</label>
-                                        <input type="number" class="form-control" id="qtd_homem" name="qtd_homem" placeholder="Quantidade de homens" value="{{ $vaga->qtd_homem }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="qtd_mulher" class="form-label">Quantidade de mulheres:</label>
-                                        <input type="number" class="form-control" id="qtd_mulher" name="qtd_mulher" placeholder="Quantidade de mulheres" value="{{ $vaga->qtd_mulher }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="image" class="form-label">Uma foto do local:</label>
-                                        <input type="file" class="form-control-file" id="image" name="image">
+                                    <div class="teste">
+                                        <input type="file" id="image" name="image" multiple>
+                                        <div class="texto-arquivo">
+                                            <i class="fa-solid fa-file"></i>
+                                            <p>Arraste seus arquivos aqui ou clique nesta área.</p>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -244,68 +255,69 @@
             <div class="modal fade" id="vagasModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar vaga</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-centro">
+                            <h1 class="titulo-modal-cadastrar-vaga" id="exampleModalLabel">Você está cadastrando uma vaga</h1>
                         </div>
                         <div class="modal-body">
                             <form action="/vaga" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="mb-3">
-                                <label for="nome" class="form-label">Nome do proprietário:</label>
-                                <input type="text" class="form-control" id="nome" name="nome" required placeholder="Nome do proprietário">
+                                <div class="row">
+                                    <div class="col-8 mb-3">
+                                        <input type="text" class="form-control" id="nome" name="nome" required placeholder="Nome do proprietário">
+                                    </div>
+                                    <div class="col mb-3">
+                                        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="endereco" class="form-label">Endereço:</label>
-                                    <input type="text" class="form-control" id="endereco" name="endereco" required placeholder="Endereço">
+                                <div class="row">
+                                    <div class="col-4 mb-3">
+                                        <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado">
+                                    </div>
+                                    <div class="col-4 mb-3">
+                                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
+                                    </div>
+                                    <div class="col-4 mb-3">
+                                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="numero" class="form-label">Número:</label>
-                                    <input type="number" class="form-control" id="numero" name="numero" required placeholder="Número">
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <input type="text" class="form-control" id="endereco" name="endereco" required placeholder="Endereço">
+                                    </div>
+                                    <div class="col mb-3">
+                                        <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Referência">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="bairro" class="form-label">Bairro:</label>
-                                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
+                                <div class="row">
+                                    <div class="col-4 mb-3">
+                                        <input type="number" class="form-control" id="numero" name="numero" required placeholder="Número">
+                                    </div>
+                                    <div class="col mb-3">
+                                        <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="cidade" class="form-label">Cidade:</label>
-                                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
+                                <div class="row">
+                                    <div class="col-8 mb-2">
+                                        <textarea rows="5" style="padding: 11px;" class="form-control" id="descricao" name="descricao" placeholder="Descrição"></textarea>
+                                    </div>
+                                    <div class="col-4 mb-2">
+                                        <div class="mb-3">
+                                            <input type="number" class="form-control" id="valor" name="valor" placeholder="Valor">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="number" class="form-control" id="qtd_homem" name="qtd_homem" placeholder="Quant. Homens">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="number" class="form-control" id="qtd_mulher" name="qtd_mulher" placeholder="Quant. Mulheres">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="estado" class="form-label">Estado:</label>
-                                    <input type="text" class="form-control" id="estado" name="estado" placeholder="estado">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="referencia" class="form-label">Referência:</label>
-                                    <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Referência">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="descricao" class="form-label">Descrição:</label>
-                                    <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="telefone" class="form-label">Telefone:</label>
-                                    <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">E-mail:</label>
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="valor" class="form-label">Valor:</label>
-                                    <input type="number" class="form-control" id="valor" name="valor" placeholder="Valor">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="qtd_homem" class="form-label">Quantidade de homens:</label>
-                                    <input type="number" class="form-control" id="qtd_homem" name="qtd_homem" placeholder="Quantidade de homens">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="qtd_mulher" class="form-label">Quantidade de mulheres:</label>
-                                    <input type="number" class="form-control" id="qtd_mulher" name="qtd_mulher" placeholder="Quantidade de mulheres">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="image" class="form-label">Uma foto do local:</label>
-                                    <input type="file" class="form-control-file" id="image" name="image">
+                                <div class="teste">
+                                    <input type="file" id="image" name="image" multiple>
+                                    <div class="texto-arquivo">
+                                        <i class="fa-solid fa-file"></i>
+                                        <p>Arraste seus arquivos aqui ou clique nesta área.</p>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
