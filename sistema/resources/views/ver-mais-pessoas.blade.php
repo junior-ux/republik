@@ -21,7 +21,7 @@
 
     <!--NAVBAR-->
     <div class="navbar">
-        <h1 class="logo">RepuBlikANS</h1>
+        <h3 class="logo">RepuBlikANS</h3>
         <ul>
             <li><a href="/" class="botao-navbar">Início</a></li>
             <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
