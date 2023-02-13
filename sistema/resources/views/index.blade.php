@@ -23,7 +23,7 @@
 
     <!--NAVBAR-->
     <div class="navbar">
-        <h1 class="logo">RepuBlikANS</h1>
+        <h3 class="logo">RepuBlikANS</h3>
         <ul>
             <li><a href="/" class="botao-navbar">Início</a></li>
             <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
@@ -54,12 +54,12 @@
     <div class="banner">
         <!--ESQUERDA-->
         <div class="coluna-esquerda">
-            <h1>
+            <h2>
                 Encontre uma vaga ou um <br>
                 colega de quarto de forma <br>
                 rápida e fácil usando nosso <br>
                 sistema.
-            </h1>
+            </h2>
         </div>
         <!--DIREITO-->
         <div class="coluna-direita">
@@ -106,82 +106,41 @@
         @foreach ($vagas as $vaga)
             <!-- MODAL VER MAIS DA VAGA -->
             <div class="modal fade" id="verMaisDaVaga{{$vaga->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel"> <strong> Ver mais </strong></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
                         <div class="modal-body">
-                            <form enctype="multipart/form-data">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <label for="nome" class="form-label">Nome do proprietário:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->nome }}" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <label for="cidade" class="form-label">Cidade:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->cidade }}" disabled>
-                                    </div>
+                            <div class="row">
+                                <div class="foto-ver-mais">
+                                    <img src="../img/vagas/{{ $vaga->image }}" class="tamanho-foto-ver-mais">
                                 </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label for="numero" class="form-label">Número:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->numero }}" disabled>
-                                    </div>
-                                    <div class="col-5">
-                                        <label for="bairro" class="form-label">Bairro:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->bairro }}" disabled>
-                                    </div>
-                                    <div class="col-4">
-                                        <label for="estado" class="form-label">Estado:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->estado }}" disabled>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 texto-cidade">
+                                    {{$vaga->cidade}}
                                 </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label for="referencia" class="form-label">Referência:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->referencia }}" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <label for="endereco" class="form-label">Endereço:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->endereco }}" disabled>
-                                    </div>
+                                <div class="col-4 texto-valor">
+                                    R$ {{$vaga->valor}}
                                 </div>
-                                <div class="row">
-                                    <div class="col-8">
-                                        <label for="email" class="form-label">E-mail:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->email }}" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <label for="telefone" class="form-label">Telefone:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->telefone }}" disabled>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 texto-estado">
+                                    {{$vaga->bairro}} - {{$vaga->estado}}
                                 </div>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <label for="qtd_homem" class="form-label">Quantidade de homens:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->qtd_homem }}" disabled>
-                                    </div>
-                                    <div class="col-5">
-                                        <label for="qtd_mulher" class="form-label">Quantidade de mulheres:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->qtd_mulher }}" disabled>
-                                    </div>
-                                    <div class="col-2">
-                                        <label for="valor" class="form-label">Valor:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->valor }}" disabled>
-                                    </div>
+                                <div class="col texto-qnt">
+                                    <i class="fa-solid fa-person tam-vaga"> {{ $vaga->qtd_homem }}</i>
+                                    <i class="fa-solid fa-person-dress tam-vaga"> {{ $vaga->qtd_mulher }}</i>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="descricao" class="form-label">Descrição:</label>
-                                        <textarea class="form-control" cols="20" rows="10" disabled>{{ $vaga->descricao }}</textarea>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col texto-descricao">
+                                    {{$vaga->descricao}}
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                            <div class="row">
+                                <div class="col btn-contato">
+                                    <a type="button" class="btn-entrar-contato" >Entre em contato</a>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,8 +184,8 @@
             <!--BODY-->
             <div class="sobre-pessoa">
                 <div class="informacao-pessoa">
-                    <h2 class="nome-pessoa">Bianca Almeida</h2>
-                    <h5 class="descricao-pessoa">Procurando apartamento próximo a UESPI no Campus de Pirajá.</h5>
+                    <h2 class="nome-pessoa">Hugo Andrade</h2>
+                    <h5 class="descricao-pessoa">Alguém anima alugar um apartamento com 3 quartos perto do centro de Piripiri?.</h5>
                 </div>
             </div>
             <!--FOOTER-->
@@ -243,8 +202,8 @@
             <!--BODY-->
             <div class="sobre-pessoa">
                 <div class="informacao-pessoa">
-                    <h2 class="nome-pessoa">Bianca Almeida</h2>
-                    <h5 class="descricao-pessoa">Procurando apartamento próximo a UESPI no Campus de Pirajá.</h5>
+                    <h2 class="nome-pessoa">Roberto Silva</h2>
+                    <h5 class="descricao-pessoa">Busco vaga por 3 meses próximo a UFPI.</h5>
                 </div>
             </div>
             <!--FOOTER-->
