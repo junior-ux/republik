@@ -61,12 +61,18 @@
         @endif
 
         <div class="inicio-vaga text-center">
+            @if(!$pesquisa)
             <h1 class="titulo-pagina">Todas as vagas</h1>
-            <div class="container"></div>
-            <form class="d-flex w-75" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-            </form>
+            @endif
+            <div class="container d-flex justify-content-center text-center mb-4">
+                <form action="/vagas" method="GET" class="d-flex w-75" role="search">
+                    <input id="pesquisa" name="pesquisa" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                    <button class="btn btn-dark" type="submit">Pesquisar</button>
+                </form>
+            </div>
+            @if($pesquisa)
+            <h2>Resultado da pesquisa por "{{ $pesquisa }}"</h2>
+            @endif
         </div>
         
         @foreach ($vagas as $vaga)
@@ -134,6 +140,15 @@
                 </div>
             </div>
         @endforeach
+
+        @if(count($vagas) == 0)
+            <div>
+                <h2>Nenhuma vaga encontrada</h2>
+            </div>
+            <div class="w-100 text-center">
+                <a href="/vagas" type="button" class="btn-entrar-contato">Ver todas as vagas</a>
+            </div>
+        @endif
         
     </div>
 
