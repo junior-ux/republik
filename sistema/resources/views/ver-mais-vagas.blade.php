@@ -56,10 +56,18 @@
                     <div class="cadastrar-vaga">
                         <a type="button" class="btn-cadastrar-vaga" data-bs-toggle="modal" data-bs-target="#vagasModal">Cadastrar vaga</a>
                     </div>
-                    <h1 class="titulo-pagina">Todas as vagas</h1>
                 </div>
             @endauth
         @endif
+
+        <div class="inicio-vaga text-center">
+            <h1 class="titulo-pagina">Todas as vagas</h1>
+            <div class="container"></div>
+            <form class="d-flex w-75" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+            </form>
+        </div>
         
         @foreach ($vagas as $vaga)
             <div class="card-vaga">
