@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
+    <!--FAVICON-->
+    <link rel="icon" href="/img/favicon.svg">
     <!--CSS-->
     <link rel="stylesheet" href="/css/style.css">
     <!--BOOTSTRAP-->
@@ -22,7 +24,9 @@
 
     <!--NAVBAR-->
     <div class="navbar">
-        <h3 class="logo">RepuBlikANS</h3>
+        <a href="/">
+            <img class="logo" src="/img/logo-republica.png" width="80px">
+        </a>
         <ul>
             <li><a href="/" class="botao-navbar">Início</a></li>
             <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
@@ -55,17 +59,16 @@
             <h1 class="titulo-pagina">Perfil</h1>
             <div class="bg-white rounded-lg d-block d-sm-flex">
                 <div class="profile-tab-nav border-right">
-                    <div class="p-4">
+                    <div class="p-1">
                         <div class="img-circle text-center mb-3">
                             <img src="/img/user.png" alt="Image" class="shadow">
                         </div>
-                        <h4 class="text-center">Usuário</h4>
                     </div>
                 </div>
-                <div class="tab-content p-4 p-md-5 d-flex align-items-center" id="v-pills-tabContent">
+                <div class="tab-content p-4 p-md-5 mt-4 d-flex align-items-center" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab" >
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col md">
                                 <div class="form-group">
                                     <label class="texto-perfil-info">Nome</label>
                                     <div class="info-perfil">
@@ -73,7 +76,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                        </div>
+                        <div class="row">
+                            <div class="col md">
                                 <div class="form-group">
                                     <label class="texto-perfil-info">E-mail</label>
                                     <div class="info-perfil">
@@ -109,7 +114,7 @@
                         </div>
                         <div class="descricao-vaga">
                             <h2 class="titulo-vaga">{{ $vaga->cidade }}</h2>
-                            <h3 class="local-vaga">{{ $vaga->bairro }} - {{ $vaga->estado }}</h3>
+                            <h3 class="local-vaga">{{ $vaga->bairro }} | {{ $vaga->estado }}</h3>
                         </div>
                     </div>
                     <!--FOOTER-->
@@ -134,7 +139,7 @@
                     </div>
                 </div>
 
-                <!-- Modal Excluir Campeonato -->
+                <!-- Modal Excluir -->
                 <div class="modal fade" id="modalDeleteCamp{{$vaga->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -273,18 +278,31 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-8 texto-estado">
-                                        {{$vaga->cidade}} - {{$vaga->estado}}
+                                        {{$vaga->cidade}} | {{$vaga->estado}}
                                     </div>
                                     <div class="col texto-qnt">
                                         <i class="fa-solid fa-person tam-vaga"> {{ $vaga->qtd_homem }}</i>
-                                        @if($vaga->mobiliado)
-                                            <i class="fa-solid fa-couch"></i>
-                                        @endif
                                     </div>
                                     <div class="col texto-qnt">
                                         <i class="fa-solid fa-person-dress tam-vaga"> {{ $vaga->qtd_mulher }}</i>
+                                    </div>
+                                </div>
+                                <div class=row>
+                                    <div class="col-8">
+                                        
+                                    </div>
+                                    <div class="col texto-animal">
                                         @if($vaga->animal)
-                                        <i class="fa-solid fa-paw tam-vaga"></i>
+                                            <i class="fa-solid fa-paw"></i>
+                                        @else
+                                            <i class="fa-solid fa-paw" style="color: #e4e4e4;"></i>
+                                        @endif
+                                    </div>
+                                    <div class="col texto-animal">
+                                    @if($vaga->mobiliado)
+                                            <i class="fa-solid fa-couch"></i>
+                                        @else
+                                            <i class="fa-solid fa-couch" style="color: #e4e4e4;"></i>
                                         @endif
                                     </div>
                                 </div>

@@ -15,7 +15,7 @@
     <!--FONTAWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- FAVICON -->
-    <link rel="icon" href="/img/logo.png">
+    <link rel="icon" href="/img/favicon.svg">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="/css/swiper-bundle.min.css">
 </head>
@@ -23,7 +23,9 @@
 
     <!--NAVBAR-->
     <div class="navbar">
-        <h3 class="logo">RepuBlikANS</h3>
+        <a href="/">
+            <img class="logo" src="/img/logo-republica.png" width="80px">
+        </a>
         <ul>
             <li><a href="/" class="botao-navbar">Início</a></li>
             <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
@@ -87,7 +89,7 @@
                                 </div>
                                 <div class="descricao-vaga">
                                     <h2 class="titulo-vaga">{{ $vaga->titulo }}</h2>
-                                    <h3 class="local-vaga">{{ $vaga->cidade }} - {{ $vaga->estado }}</h3>
+                                    <h3 class="local-vaga">{{ $vaga->cidade }} | {{ $vaga->estado }}</h3>
                                 </div>
                             </div>
                             <!--FOOTER-->
@@ -123,18 +125,31 @@
                             </div>
                             <div class="row">
                                 <div class="col-8 texto-estado">
-                                    {{$vaga->cidade}} - {{$vaga->estado}}
+                                    {{$vaga->cidade}} | {{$vaga->estado}}
                                 </div>
                                 <div class="col texto-qnt">
                                     <i class="fa-solid fa-person tam-vaga"> {{ $vaga->qtd_homem }}</i>
-                                    @if($vaga->mobiliado)
-                                        <i class="fa-solid fa-couch"></i>
-                                    @endif
                                 </div>
                                 <div class="col texto-qnt">
                                     <i class="fa-solid fa-person-dress tam-vaga"> {{ $vaga->qtd_mulher }}</i>
+                                </div>
+                            </div>
+                            <div class=row>
+                                <div class="col-8">
+                                        
+                                </div>
+                                <div class="col texto-animal">
                                     @if($vaga->animal)
-                                    <i class="fa-solid fa-paw tam-vaga"></i>
+                                        <i class="fa-solid fa-paw"></i>
+                                    @else
+                                        <i class="fa-solid fa-paw" style="color: #e4e4e4;"></i>
+                                    @endif
+                                </div>
+                                <div class="col texto-animal">
+                                @if($vaga->mobiliado)
+                                        <i class="fa-solid fa-couch"></i>
+                                    @else
+                                        <i class="fa-solid fa-couch" style="color: #e4e4e4;"></i>
                                     @endif
                                 </div>
                             </div>

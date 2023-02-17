@@ -16,9 +16,13 @@
 /*navbar*/
 .navbar {
     width: 80%;
-    margin: 30px auto;
+    margin: 10px auto;
+    padding-left: 15px;
     display: flex;
     align-items: center;
+}
+.logo{
+    padding-left: 10px;
 }
 ul {
     flex: 1;
@@ -27,7 +31,7 @@ ul {
 ul li {
     display: inline-block;
     list-style: none;
-    margin: 0 20px;
+    margin: 20px;
 }
 ul li a {
     text-decoration: none;
@@ -660,6 +664,18 @@ hr {
 }
 .texto-qnt{
     font-size: 20px;
+    text-align: end;
+    color: #505050;
+}
+.fundo-login{
+    background-color: #000;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+.texto-animal{
+    font-size: 20px;
+    margin: 5px;
     text-align: end;
     color: #505050;
 }

@@ -12,8 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
-    <!-- FAVICON -->
-    <link rel="icon" href="/img/logo.png">
+    
+    <!--FAVICON-->
+    <link rel="icon" href="/img/favicon.svg">
     <!--FONTAWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
@@ -21,7 +22,7 @@
 
     <!--NAVBAR-->
     <div class="navbar">
-        <h3 class="logo">RepuBlikANS</h3>
+        <img src="/img/logo-republica.png" width="80px">
         <ul>
             <li><a href="/" class="botao-navbar">Início</a></li>
             <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
