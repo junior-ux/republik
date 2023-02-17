@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vaga;
+use App\Models\User;
 
 class VagaController extends Controller
 {
@@ -17,7 +18,7 @@ class VagaController extends Controller
     public function store(Request $request) {
         $vaga = new Vaga;
         
-        $vaga->nome = $request->nome;
+        $vaga->titulo = $request->titulo;
         $vaga->endereco = $request->endereco;
         $vaga->numero = $request->numero;
         $vaga->bairro = $request->bairro;
@@ -32,6 +33,8 @@ class VagaController extends Controller
 
         $vaga->qtd_homem = $request->qtd_homem;
         $vaga->qtd_mulher = $request->qtd_mulher;
+        $vaga->mobiliado = $request->mobiliado;
+        $vaga->animal = $request->animal;
 
         //salvar image
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -65,6 +68,7 @@ class VagaController extends Controller
                         ->orWhere('endereco', 'like', '%'.$pesquisa.'%')
                         ->orWhere('bairro', 'like', '%'.$pesquisa.'%')
                         ->orWhere('descricao', 'like', '%'.$pesquisa.'%')
+                        ->orWhere('titulo', 'like', '%'.$pesquisa.'%')
                         ->get();
 
         }else {
@@ -93,7 +97,7 @@ class VagaController extends Controller
         $vaga = Vaga::findOrFail($request->id);
         echo $vaga;
 
-        $vaga->nome = $request->nome;
+        $vaga->titulo = $request->titulo;
         $vaga->endereco = $request->endereco;
         $vaga->numero = $request->numero;
         $vaga->bairro = $request->bairro;
@@ -108,6 +112,8 @@ class VagaController extends Controller
 
         $vaga->qtd_homem = $request->qtd_homem;
         $vaga->qtd_mulher = $request->qtd_mulher;
+        $vaga->mobiliado = $request->mobiliado;
+        $vaga->animal = $request->animal;
 
         //salvar image
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -122,6 +128,13 @@ class VagaController extends Controller
         $vaga->save();
 
         return redirect('/perfil');
+    }
+
+    public function vaga($id) {
+        $vaga = Vaga::findOrFail($id);
+        $user = User::findOrFail($vaga->user_id);
+
+        return view('vaga', ['vaga' => $vaga, 'user' => $user]);
     }
 
 }

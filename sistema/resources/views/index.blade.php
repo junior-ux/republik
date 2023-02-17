@@ -27,7 +27,6 @@
         <ul>
             <li><a href="/" class="botao-navbar">Início</a></li>
             <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
-            <li><a href="/pessoas" class="botao-navbar">Pessoas</a></li>
             @if (Route::has('login'))
                 @auth
                     <li><a href="/perfil" class="botao-navbar autenticacao">Perfil</a></li>
@@ -87,8 +86,8 @@
                                     <h4 class="valor-vaga">R$ {{ $vaga->valor }}</h4>
                                 </div>
                                 <div class="descricao-vaga">
-                                    <h2 class="titulo-vaga">{{ $vaga->cidade }}</h2>
-                                    <h3 class="local-vaga">{{ $vaga->bairro }} - {{ $vaga->estado }}</h3>
+                                    <h2 class="titulo-vaga">{{ $vaga->titulo }}</h2>
+                                    <h3 class="local-vaga">{{ $vaga->cidade }} - {{ $vaga->estado }}</h3>
                                 </div>
                             </div>
                             <!--FOOTER-->
@@ -116,7 +115,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-8 texto-cidade">
-                                    {{$vaga->cidade}}
+                                    {{$vaga->titulo}}
                                 </div>
                                 <div class="col-4 texto-valor">
                                     R$ {{$vaga->valor}}
@@ -124,11 +123,19 @@
                             </div>
                             <div class="row">
                                 <div class="col-8 texto-estado">
-                                    {{$vaga->bairro}} - {{$vaga->estado}}
+                                    {{$vaga->cidade}} - {{$vaga->estado}}
                                 </div>
                                 <div class="col texto-qnt">
                                     <i class="fa-solid fa-person tam-vaga"> {{ $vaga->qtd_homem }}</i>
+                                    @if($vaga->mobiliado)
+                                        <i class="fa-solid fa-couch"></i>
+                                    @endif
+                                </div>
+                                <div class="col texto-qnt">
                                     <i class="fa-solid fa-person-dress tam-vaga"> {{ $vaga->qtd_mulher }}</i>
+                                    @if($vaga->animal)
+                                    <i class="fa-solid fa-paw tam-vaga"></i>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">
@@ -138,7 +145,7 @@
                             </div>
                             <div class="row">
                                 <div class="col btn-contato">
-                                    <a type="button" class="btn-entrar-contato" >Entre em contato</a>
+                                    <a href="https://wa.me/+55{{ $vaga->telefone }}?text=Olá%2C+vim+pelo+RepuBlikANS+e+tenho+interesse+na+vaga+anunciada.+Podemos+conversar%3F" target="_blank" type="button" class="btn-entrar-contato" >Entre em contato</a>
                                 </div>
                             </div>
                         </div>
@@ -148,71 +155,6 @@
         @endforeach
         <div class="ver-todas">
             <a href="/vagas" class="btn-ver-todas">VER TODAS</a>
-        </div>
-    </div>
-    
-
-    <!--PESSOAS-->
-    <div class="container-pessoa">
-        <h1 class="titulo-home-pessoa">Encontre colegas de quarto</h1>
-        
-        <!--CARD 1-->
-        <div class="card-pessoa">
-            <!--HEADER-->
-            <div class="foto-pessoa">
-                <img src="../img/pessoa-1.png" class="tamanho-pessoa">
-            </div>
-            <!--BODY-->
-            <div class="sobre-pessoa">
-                <div class="informacao-pessoa">
-                    <h2 class="nome-pessoa">Bianca Almeida</h2>
-                    <h5 class="descricao-pessoa">Procurando apartamento próximo a UESPI no Campus de Pirajá.</h5>
-                </div>
-            </div>
-            <!--FOOTER-->
-            <div class="ver-mais-pessoa">
-                <button>Ver mais</button>
-            </div>
-        </div>
-
-        <!--CARD 2-->
-        <div class="card-pessoa">
-            <!--HEADER-->
-            <div class="foto-pessoa">
-                <img src="../img/pessoa-2.png" class="tamanho-pessoa">
-            </div>
-            <!--BODY-->
-            <div class="sobre-pessoa">
-                <div class="informacao-pessoa">
-                    <h2 class="nome-pessoa">Hugo Andrade</h2>
-                    <h5 class="descricao-pessoa">Alguém anima alugar um apartamento com 3 quartos perto do centro de Piripiri?.</h5>
-                </div>
-            </div>
-            <!--FOOTER-->
-            <div class="ver-mais-pessoa">
-                <button>Ver mais</button>
-            </div>
-        </div>
-        <!--CARD 3-->
-        <div class="card-pessoa">
-            <!--HEADER-->
-            <div class="foto-pessoa">
-                <img src="../img/pessoa-3.png" class="tamanho-pessoa">
-            </div>
-            <!--BODY-->
-            <div class="sobre-pessoa">
-                <div class="informacao-pessoa">
-                    <h2 class="nome-pessoa">Roberto Silva</h2>
-                    <h5 class="descricao-pessoa">Busco vaga por 3 meses próximo a UFPI.</h5>
-                </div>
-            </div>
-            <!--FOOTER-->
-            <div class="ver-mais-pessoa">
-                <button>Ver mais</button>
-            </div>
-        </div>
-        <div class="ver-todas">
-            <a href="/pessoas" class="btn-ver-todas">VER TODAS</a>
         </div>
     </div>
 

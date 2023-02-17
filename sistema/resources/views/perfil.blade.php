@@ -15,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
     <!--FONTAWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 </head>
 <body class="fundo">
 
@@ -24,7 +26,6 @@
         <ul>
             <li><a href="/" class="botao-navbar">Início</a></li>
             <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
-            <li><a href="/pessoas" class="botao-navbar">Pessoas</a></li>
             @if (Route::has('login'))
                 @auth
                     <li><a href="/perfil" class="botao-navbar autenticacao">Perfil</a></li>
@@ -114,10 +115,21 @@
                     <!--FOOTER-->
                     <div class="ver-mais-vaga text-center">
                         <a class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$vaga->id}}">
-                            <i class="fa-solid fa-pen"></i> Editar
+                            <i class="fa-solid fa-pen"></i>
                         </a>
                         <a class="btn btn-danger m-2" data-bs-toggle="modal" data-bs-target="#modalDeleteCamp{{$vaga->id}}">
-                            <i class="fa-solid fa-trash"></i> Apagar
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                        <a class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#verMaisDaVaga{{$vaga->id}}">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <!--
+                        <a class="btn btn-success m-2" href="/vaga/{{$vaga->id}}">
+                            <i class="fa-solid fa-print"></i>
+                        </a>
+                        -->
+                        <a class="btn btn-success m-2" id="btGerarPDF">
+                            <i class="fa-solid fa-print"></i>
                         </a>
                     </div>
                 </div>
@@ -159,7 +171,7 @@
                                     @method('PUT')
                                     <div class="row">
                                         <div class="col-8 mb-3">
-                                            <input type="text" class="form-control" id="nome" name="nome" required placeholder="Nome do proprietário" value="{{ $vaga->nome }}">
+                                            <input type="text" class="form-control" id="titulo" name="titulo" required placeholder="Nome do proprietário" value="{{ $vaga->titulo }}">
                                         </div>
                                         <div class="col mb-3">
                                             <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" value="{{ $vaga->telefone }}">
@@ -208,6 +220,22 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <label for="mobiliado" class="form-label">Tem móveis?</label>
+                                            <select class="form-select" id="mobiliado" name="mobiliado" aria-label="Default select example">
+                                                <option selected value="1">Sim</option>
+                                                <option value="0" {{$vaga->mobiliado == 0 ? "selected='selected'" : ""}}>Não</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label for="animal" class="form-label">Tem animais?</label>
+                                            <select class="form-select" id="animal" name="animal" aria-label="Default select example">
+                                                <option selected value="1">Sim</option>
+                                                <<option value="0" {{$vaga->animal == 0 ? "selected='selected'" : ""}}>Não</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="teste">
                                         <input type="file" id="image" name="image" multiple>
                                         <div class="texto-arquivo">
@@ -220,6 +248,56 @@
                                         <button type="submit" class="btn btn-primary">Salvar</button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL VER MAIS DA VAGA -->
+                <div class="modal fade" id="verMaisDaVaga{{$vaga->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="foto-ver-mais">
+                                        <img src="../img/vagas/{{ $vaga->image }}" class="tamanho-foto-ver-mais">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 texto-cidade">
+                                        {{$vaga->titulo}}
+                                    </div>
+                                    <div class="col-4 texto-valor">
+                                        R$ {{$vaga->valor}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 texto-estado">
+                                        {{$vaga->cidade}} - {{$vaga->estado}}
+                                    </div>
+                                    <div class="col texto-qnt">
+                                        <i class="fa-solid fa-person tam-vaga"> {{ $vaga->qtd_homem }}</i>
+                                        @if($vaga->mobiliado)
+                                            <i class="fa-solid fa-couch"></i>
+                                        @endif
+                                    </div>
+                                    <div class="col texto-qnt">
+                                        <i class="fa-solid fa-person-dress tam-vaga"> {{ $vaga->qtd_mulher }}</i>
+                                        @if($vaga->animal)
+                                        <i class="fa-solid fa-paw tam-vaga"></i>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col texto-descricao">
+                                        {{$vaga->descricao}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col btn-contato">
+                                        <a href="https://wa.me/+55{{ $vaga->telefone }}?text=Olá%2C+vim+pelo+RepuBlikANS+e+tenho+interesse+na+vaga+anunciada.+Podemos+conversar%3F" target="_blank" type="button" class="btn-entrar-contato" >Entre em contato</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -239,7 +317,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-8 mb-3">
-                                        <input type="text" class="form-control" id="nome" name="nome" required placeholder="Nome do proprietário">
+                                        <input type="text" class="form-control" id="titulo" name="titulo" required placeholder="Título da vaga">
                                     </div>
                                     <div class="col mb-3">
                                         <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
@@ -288,6 +366,22 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <label for="mobiliado" class="form-label">Tem móveis?</label>
+                                        <select class="form-select" id="mobiliado" name="mobiliado" aria-label="Default select example">
+                                            <option selected value="1">Sim</option>
+                                            <option value="0">Não</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label for="animal" class="form-label">Tem animais?</label>
+                                        <select class="form-select" id="animal" name="animal" aria-label="Default select example">
+                                            <option selected value="1">Sim</option>
+                                            <option value="0">Não</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="teste">
                                     <input type="file" id="image" name="image" multiple>
                                     <div class="texto-arquivo">
@@ -308,7 +402,7 @@
     
     
     <!--RODAPÉ-->
-    <div class="rodape">
+    <div class="rodape" id="conteudo">
         <div class="footer-content">
             <h3>RepuBlikANS</h3>
             <hr>
@@ -319,6 +413,24 @@
             </ul>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script>
+
+        var doc = new jsPDF();
+        var specialElementHandlers = {
+            '#editor': function (element, renderer) {
+                return true;
+            }
+        };
+
+        $('#btGerarPDF').click(function () {
+            doc.fromHTML($('#conteudo').html(), 15, 15, {
+                'width': 170,
+                    'elementHandlers': specialElementHandlers
+            });
+            doc.save('exemplo-pdf.pdf');
+        });
+    </script>
 </body>
 </html>

@@ -39,6 +39,8 @@ Route::get('/perfil', [VagaController::class, 'perfil'])->middleware('auth');
 Route::delete('/vaga/{id}', [VagaController::class, 'destroy']);
 Route::put('/update/{id}', [VagaController::class, 'update'])->middleware('auth');
 
+Route::get('/vaga/{id}', [VagaController::class, 'vaga']);
+
 
 Route::middleware([
     'auth:sanctum',

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string("nome");
+            $table->string("titulo");
             $table->string("endereco");
             $table->integer("numero");
             $table->string("bairro");
@@ -30,6 +30,8 @@ return new class extends Migration
             $table->string("valor");
             $table->integer("qtd_homem");
             $table->integer("qtd_mulher");
+            $table->boolean("mobiliado");
+            $table->boolean("animal");
             $table->string("image");
         });
     }

@@ -730,6 +730,8 @@ hr {
     outline: none;
     opacity: 0;
 }
+
+.card-contato{ writing-mode: vertical-rl; }
   
   
   
