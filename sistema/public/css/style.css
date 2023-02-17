@@ -4,11 +4,13 @@
     padding: 0;
     font-family: 'Reem Kufi Ink', sans-serif;
 }
+
 .titulo-pagina {
     width: 100%;
     text-align: center;
     color: #122526;
-    font-size: 60px;
+    font-weight: 900;
+    font-size: 45px;
 }
 
 /*navbar*/
@@ -31,7 +33,8 @@ ul li a {
     text-decoration: none;
     color: rgb(255, 255, 255);
     padding: 0 10px;
-    font-weight: 900;
+    font-weight: 800;
+    font-size: 14px;
 }
 .botao-navbar {
     padding: 7px 30px;
@@ -70,8 +73,13 @@ ul li a {
     right: 0;
     margin: auto;
     width: 80%;
-    padding-top: 40px;
+    margin-top: 40px;
     color: #fff;
+    margin-bottom: 30px;
+}
+ol,
+ul {
+  padding-right: 2rem;
 }
 hr {
     color: #fff;
@@ -94,7 +102,7 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1rem 0 3rem 0;
+    margin: 5px 0 5px 0;
 }
 .social li {
     margin: 0 5px;
@@ -120,16 +128,17 @@ hr {
     margin-top: 80px;
 }
 .coluna-esquerda {
-    padding-left: 50px;
+    padding-left: 35px;
     padding-top: 150px;
     flex-basis: 100%;
 }
 .coluna-direita img {
     display: flex;
-    width: 600px;
+    width: 500px;
 }
-.coluna-esquerda h1 {
-    font-size: 50px;
+.coluna-esquerda h2 {
+    font-size: 40px;
+    font-weight: 550;
     color: #fff;
 }
 
@@ -156,11 +165,11 @@ hr {
     padding: 5px;
 }
 .card-vaga {
-    width: 350px;
+    width: 300px;
     padding-bottom: 50px;
     position: relative;
     transition: 0.5s;
-    height: 550px;
+    height: 480px;
     margin: 25px;
     background-color: #fff;
     border-radius: 20px;
@@ -173,7 +182,7 @@ hr {
 }
 .card-vaga .foto-vaga {
     width: 100%;
-    height: 250px;
+    height: 200px;
     overflow: hidden;
 }
 .card-vaga .foto-vaga .tamanho-vaga {
@@ -201,7 +210,7 @@ hr {
     color: rgb(37, 37, 37);
 }
 .descricao-vaga  .titulo-vaga  {
-    font-size: 32px;
+    font-size: 25px;
     margin: 15px 0;
     text-align: left;
 }
@@ -255,25 +264,7 @@ hr {
     margin-bottom: 50px;
     font-size: 30px;
 }
-.card-pessoa {
-    width: 350px;
-    height: 500px;
-    margin: 25px;
-    background-color: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
-}
-.card-pessoa .foto {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-}
-.card-pessoa .tamanho{
-    min-width: 100%;
-    width: auto;
-    height: 100%;
-}
+
 .ver-todas {
     margin-top: 50px;
     width: 100%;
@@ -319,13 +310,13 @@ hr {
     width: 100%;
     text-align: center;
     color: #ffffff;
-    font-size: 50px;
+    font-size: 45px;
 }
 .card-pessoa {
-    width: 350px;
+    width: 300px;
     position: relative;
     transition: 0.5s;
-    height: 550px;
+    height: 450px;
     margin: 25px;
     background-color: #fff;
     border-radius: 20px;
@@ -334,7 +325,7 @@ hr {
 }
 .card-pessoa .foto-pessoa {
     width: 100%;
-    height: 250px;
+    height: 200px;
     overflow: hidden;
 }
 .card-pessoa .foto-pessoa .tamanho-pessoa {
@@ -343,7 +334,7 @@ hr {
     height: 100%;
 }
 .sobre-pessoa {
-    height: 170px;
+    height: 100px;
     padding: 15px;
     text-align: center;
 }
@@ -364,12 +355,13 @@ hr {
     margin-bottom: 10px;
     color: rgb(37, 37, 37);
 }
-.ver-mais-pessoa {
+.card-pessoa .ver-mais-pessoa {
     text-align: center;
     align-items: center;
 }
-.ver-mais-pessoa button {
+.card-pessoa .ver-mais-pessoa button {
     margin-right: 15px;
+    margin-top: 80px;
     width: 250px;
     height: 50px;
     outline: none;
@@ -427,7 +419,8 @@ hr {
     width: 100%;
     text-align: center;
     color: #122526;
-    font-size: 50px;
+    font-weight: 900;
+    font-size: 45px;
 }
 .ver-mais-vaga {
     text-align: center;
@@ -504,12 +497,13 @@ hr {
 /*fim swiper*/
 
 
-
+/*.swiper-rtl .swiper-button-prev{
+    background: #122526; color: #fff; border-radius: 100%; padding: 20px; 
+}*/
 /*card vaga homepage*/
 .card-vaga-homepage {
-    width: 350px;
+    width: 200px;
     padding-bottom: 50px;
-    margin-top: 30px;
     margin-bottom: 50px;
     position: relative;
     transition: 0.5s;
@@ -548,17 +542,17 @@ hr {
     text-align: right;
 }
 .card-vaga-homepage .sobre-vaga .descricao-vaga {
-    font-size: 15px;
+    font-size: 150px;
     text-align: justify;
     color: rgb(37, 37, 37);
 }
 .descricao  .titulo-vaga  {
-    font-size: 32px;
+    font-size: 15px;
     margin: 15px 0;
     text-align: left;
 }
 .descricao .local-vaga {
-    font-size: 20px;
+    font-size: 15px;
     width: 100%;
     text-align: left;
     margin-bottom: 10px;
@@ -630,3 +624,114 @@ hr {
     border-radius: 100%;
     border: 5px solid #fff;
 }
+
+
+
+.texto-perfil-info{
+    font-size: 20px;
+    font-weight: 700;
+    color: #122526;
+}
+.info-perfil{
+    font-size: 20px;
+    color: #343434;
+    text-align: justify;
+}
+
+
+.texto-valor{
+    font-size: 30px;
+    font-weight: 700;
+    padding-top: 20px;
+    margin-bottom: 5px;
+    color: #000;
+    text-align: end;
+}
+.texto-cidade{
+    font-size: 30px;
+    font-weight: 700;
+    padding-top: 20px;
+    margin-bottom: 5px;
+    color: #000;
+}
+.texto-estado{
+    font-size: 20px;
+    color: #505050;
+}
+.texto-qnt{
+    font-size: 20px;
+    text-align: end;
+    color: #505050;
+}
+.btn-contato{
+    padding-top: 30px;
+    text-align: end;
+}
+.texto-descricao{
+    font-size: 20px;
+    padding-top: 20px;
+    text-align: justify;
+    color: #505050;
+}
+.foto-ver-mais {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+.tamanho-foto-ver-mais {
+    min-width: 100%;
+    width: auto;
+    height: 100%;
+    border-radius: 20px;
+}
+.btn-entrar-contato {
+    padding: 10px;
+    font-size: 15px;
+    align-items: flex-end;
+    border-radius: 15px;
+    text-decoration: none;
+    background: #1594A6;
+    color: white;
+}
+.btn-entrar-contato:hover {
+    background: #122526;
+    color: white;
+}
+.modal-centro{
+    text-align: center;
+}
+.titulo-modal-cadastrar-vaga{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+
+.teste{
+    position: relative;
+    height: 150px;
+    margin: 0 25px 10px 25px;
+    border: 2px dashed #a1a1a1;
+}
+.teste .texto-arquivo{
+    width: 100%;
+    text-align: center;
+    margin-top: 45px;
+    color: #a1a1a1;
+}
+.teste .texto-arquivo i{
+    width: 20px;
+}
+.teste input{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+}
+  
+  
+  
+  
+  

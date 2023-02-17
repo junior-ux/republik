@@ -52,9 +52,27 @@ class VagaController extends Controller
     }
 
     public function vagas() {
-        $vagas = Vaga::all();
 
-        return view('ver-mais-vagas', ['vagas' => $vagas]);
+        $pesquisa = request('pesquisa');
+
+        if ($pesquisa) {
+            /*$vagas = Vaga::Where([
+                ['cidade', 'like', '%'.$pesquisa.'%']
+            ])->get();*/
+
+            $vagas = Vaga::where('cidade', 'like', '%'.$pesquisa.'%')
+                        ->orWhere('estado', 'like', '%'.$pesquisa.'%')
+                        ->orWhere('endereco', 'like', '%'.$pesquisa.'%')
+                        ->orWhere('bairro', 'like', '%'.$pesquisa.'%')
+                        ->orWhere('descricao', 'like', '%'.$pesquisa.'%')
+                        ->get();
+
+        }else {
+            $vagas = Vaga::all();
+        }
+
+
+        return view('ver-mais-vagas', ['vagas' => $vagas, 'pesquisa' => $pesquisa]);
     }
 
     public function perfil() {

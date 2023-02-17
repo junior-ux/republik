@@ -21,7 +21,7 @@
 
     <!--NAVBAR-->
     <div class="navbar">
-        <h1 class="logo">RepuBlikANS</h1>
+        <h3 class="logo">RepuBlikANS</h3>
         <ul>
             <li><a href="/" class="botao-navbar">Início</a></li>
             <li><a href="/vagas" class="botao-navbar">Vagas</a></li>
@@ -56,10 +56,24 @@
                     <div class="cadastrar-vaga">
                         <a type="button" class="btn-cadastrar-vaga" data-bs-toggle="modal" data-bs-target="#vagasModal">Cadastrar vaga</a>
                     </div>
-                    <h1 class="titulo-pagina">Todas as vagas</h1>
                 </div>
             @endauth
         @endif
+
+        <div class="inicio-vaga text-center">
+            @if(!$pesquisa)
+            <h1 class="titulo-pagina">Todas as vagas</h1>
+            @endif
+            <div class="container d-flex justify-content-center text-center mb-4">
+                <form action="/vagas" method="GET" class="d-flex w-75" role="search">
+                    <input id="pesquisa" name="pesquisa" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                    <button class="btn btn-dark" type="submit">Pesquisar</button>
+                </form>
+            </div>
+            @if($pesquisa)
+            <h2>Resultado da pesquisa por "{{ $pesquisa }}"</h2>
+            @endif
+        </div>
         
         @foreach ($vagas as $vaga)
             <div class="card-vaga">
@@ -86,164 +100,133 @@
             </div>
             <!-- MODAL VER MAIS DA VAGA -->
             <div class="modal fade" id="verMaisDaVaga{{$vaga->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel"> <strong> Ver mais </strong></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
                         <div class="modal-body">
-                            <form enctype="multipart/form-data">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <label for="nome" class="form-label">Nome do proprietário:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->nome }}" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <label for="cidade" class="form-label">Cidade:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->cidade }}" disabled>
-                                    </div>
+                            <div class="row">
+                                <div class="foto-ver-mais">
+                                    <img src="../img/vagas/{{ $vaga->image }}" class="tamanho-foto-ver-mais">
                                 </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label for="numero" class="form-label">Número:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->numero }}" disabled>
-                                    </div>
-                                    <div class="col-5">
-                                        <label for="bairro" class="form-label">Bairro:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->bairro }}" disabled>
-                                    </div>
-                                    <div class="col-4">
-                                        <label for="estado" class="form-label">Estado:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->estado }}" disabled>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 texto-cidade">
+                                    {{$vaga->cidade}}
                                 </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label for="referencia" class="form-label">Referência:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->referencia }}" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <label for="endereco" class="form-label">Endereço:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->endereco }}" disabled>
-                                    </div>
+                                <div class="col-4 texto-valor">
+                                    R$ {{$vaga->valor}}
                                 </div>
-                                <div class="row">
-                                    <div class="col-8">
-                                        <label for="email" class="form-label">E-mail:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->email }}" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <label for="telefone" class="form-label">Telefone:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->telefone }}" disabled>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 texto-estado">
+                                    {{$vaga->bairro}} - {{$vaga->estado}}
                                 </div>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <label for="qtd_homem" class="form-label">Quantidade de homens:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->qtd_homem }}" disabled>
-                                    </div>
-                                    <div class="col-5">
-                                        <label for="qtd_mulher" class="form-label">Quantidade de mulheres:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->qtd_mulher }}" disabled>
-                                    </div>
-                                    <div class="col-2">
-                                        <label for="valor" class="form-label">Valor:</label>
-                                        <input type="text" class="form-control" value="{{ $vaga->valor }}" disabled>
-                                    </div>
+                                <div class="col texto-qnt">
+                                    <i class="fa-solid fa-person tam-vaga"> {{ $vaga->qtd_homem }}</i>
+                                    <i class="fa-solid fa-person-dress tam-vaga"> {{ $vaga->qtd_mulher }}</i>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="descricao" class="form-label">Descrição:</label>
-                                        <textarea class="form-control" cols="20" rows="10" disabled>{{ $vaga->descricao }}</textarea>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col texto-descricao">
+                                    {{$vaga->descricao}}
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                            <div class="row">
+                                <div class="col btn-contato">
+                                    <a type="button" class="btn-entrar-contato" >Entre em contato</a>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
+
+        @if(count($vagas) == 0)
+            <div>
+                <h2>Nenhuma vaga encontrada</h2>
+            </div>
+            <div class="w-100 text-center">
+                <a href="/vagas" type="button" class="btn-entrar-contato">Ver todas as vagas</a>
+            </div>
+        @endif
         
     </div>
 
     <!-- Modal cadastrar vaga -->
     <div class="modal fade" id="vagasModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar vaga</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-centro">
+                    <h1 class="titulo-modal-cadastrar-vaga" id="exampleModalLabel">Você está cadastrando uma vaga</h1>
+                </div>
+                <div class="modal-body">
+                    <form action="/vaga" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-8 mb-3">
+                                <input type="text" class="form-control" id="nome" name="nome" required placeholder="Nome do proprietário">
+                            </div>
+                            <div class="col mb-3">
+                                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 mb-3">
+                                <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado">
+                            </div>
+                            <div class="col-4 mb-3">
+                                <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
+                            </div>
+                            <div class="col-4 mb-3">
+                                <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <input type="text" class="form-control" id="endereco" name="endereco" required placeholder="Endereço">
+                            </div>
+                            <div class="col mb-3">
+                                <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Referência">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 mb-3">
+                                <input type="number" class="form-control" id="numero" name="numero" required placeholder="Número">
+                            </div>
+                            <div class="col mb-3">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 mb-2">
+                                <textarea rows="5" style="padding: 11px;" class="form-control" id="descricao" name="descricao" placeholder="Descrição"></textarea>
+                            </div>
+                            <div class="col-4 mb-2">
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" id="valor" name="valor" placeholder="Valor">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" id="qtd_homem" name="qtd_homem" placeholder="Quant. Homens">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" id="qtd_mulher" name="qtd_mulher" placeholder="Quant. Mulheres">
+                                </div>
+                            </div>
+                        </div>
+                            <div class="teste">
+                                <input type="file" id="image" name="image" multiple>
+                                <div class="texto-arquivo">
+                                    <i class="fa-solid fa-file"></i>
+                                    <p>Arraste seus arquivos aqui ou clique nesta área.</p>
+                                </div>
+                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="modal-body">
-                <form action="/vaga" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-3">
-                    <label for="nome" class="form-label">Nome do proprietário:</label>
-                    <input type="text" class="form-control" id="nome" name="nome" required placeholder="Nome do proprietário">
-                    </div>
-                    <div class="mb-3">
-                        <label for="endereco" class="form-label">Endereço:</label>
-                        <input type="text" class="form-control" id="endereco" name="endereco" required placeholder="Endereço">
-                    </div>
-                    <div class="mb-3">
-                        <label for="numero" class="form-label">Número:</label>
-                        <input type="number" class="form-control" id="numero" name="numero" required placeholder="Número">
-                    </div>
-                    <div class="mb-3">
-                        <label for="bairro" class="form-label">Bairro:</label>
-                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
-                    </div>
-                    <div class="mb-3">
-                        <label for="cidade" class="form-label">Cidade:</label>
-                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
-                    </div>
-                    <div class="mb-3">
-                        <label for="estado" class="form-label">Estado:</label>
-                        <input type="text" class="form-control" id="estado" name="estado" placeholder="estado">
-                    </div>
-                    <div class="mb-3">
-                        <label for="referencia" class="form-label">Referência:</label>
-                        <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Referência">
-                    </div>
-                    <div class="mb-3">
-                        <label for="descricao" class="form-label">Descrição:</label>
-                        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefone" class="form-label">Telefone:</label>
-                        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail:</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
-                    </div>
-                    <div class="mb-3">
-                        <label for="valor" class="form-label">Valor:</label>
-                        <input type="number" class="form-control" id="valor" name="valor" placeholder="Valor">
-                    </div>
-                    <div class="mb-3">
-                        <label for="qtd_homem" class="form-label">Quantidade de homens:</label>
-                        <input type="number" class="form-control" id="qtd_homem" name="qtd_homem" placeholder="Quantidade de homens">
-                    </div>
-                    <div class="mb-3">
-                        <label for="qtd_mulher" class="form-label">Quantidade de mulheres:</label>
-                        <input type="number" class="form-control" id="qtd_mulher" name="qtd_mulher" placeholder="Quantidade de mulheres">
-                    </div>
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Uma foto do local:</label>
-                        <input type="file" class="form-control-file" id="image" name="image">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
         </div>
     </div>
     
