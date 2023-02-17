@@ -61,22 +61,14 @@
                         <h4 class="text-center">Usuário</h4>
                     </div>
                 </div>
-                <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+                <div class="tab-content p-4 p-md-5 d-flex align-items-center" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab" >
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="texto-perfil-info">Nome</label>
                                     <div class="info-perfil">
-                                        Usuário
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="texto-perfil-info">Telefone</label>
-                                    <div class="info-perfil">
-                                        (99) 99999-9999
+                                        {{ $user->name }}
                                     </div>
                                 </div>
                             </div>
@@ -84,23 +76,7 @@
                                 <div class="form-group">
                                     <label class="texto-perfil-info">E-mail</label>
                                     <div class="info-perfil">
-                                        usuario@gmail.com
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="texto-perfil-info">Endereço</label>
-                                    <div class="info-perfil">
-                                        Piripiri
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="texto-perfil-info">Biografia</label>
-                                    <div class="info-perfil">
-                                        Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.3
+                                        {{ $user->email }}
                                     </div>
                                 </div>
                             </div>

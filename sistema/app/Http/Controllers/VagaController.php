@@ -80,7 +80,7 @@ class VagaController extends Controller
         $user = auth()->user();
         $vagas = $user->vagas;
 
-        return view('perfil', ['vagas' => $vagas]);
+        return view('perfil', ['vagas' => $vagas, 'user' => $user]);
     }
 
     public function destroy($id) {
